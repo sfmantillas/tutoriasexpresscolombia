@@ -1,212 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorías Express Colombia</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #F5F5F0;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            background-color: #1A237E;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .logo-circle {
-            background-color: #D4AF37;
-            border-radius: 50%;
-            padding: 10px;
-            display: inline-block;
-        }
-
-        /* Welcome Section */
-        .welcome {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #F5F5F0;
-        }
-
-        .welcome h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #1A237E;
-        }
-
-        .welcome p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 20px;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 40px 20px;
-            text-align: center;
-            background-color: #F5F5F0;
-        }
-
-        .services h2 {
-            font-size: 1.8rem;
-            color: #1A237E;
-            margin-bottom: 20px;
-        }
-
-        .services p {
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-        .service-card img {
-            width: 100px;
-            height: 100px;
-            background-color: #ccc; /* Placeholder for icons */
-            margin-bottom: 10px;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 40px 20px;
-            text-align: center;
-            background-color: #F5F5F0;
-        }
-
-        .testimonials h2 {
-            font-size: 1.8rem;
-            color: #1A237E;
-            margin-bottom: 20px;
-        }
-
-        .testimonial {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #4E342E;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .welcome h1 {
-                font-size: 1.5rem;
-            }
-
-            .welcome p {
-                font-size: 1rem;
-            }
-
-            .services h2, .testimonials h2 {
-                font-size: 1.5rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Tutoras Express Colombia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f3f6fb; }
+    header { background:#0d47a1; color:#fff; padding:20px; text-align:center; }
+    nav { background:#1565c0; padding:10px 0; text-align:center; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
+    .hero { background:#e3f2fd; padding:50px 20px; text-align:center; }
+    .hero h1 { color:#0d47a1; font-size:2.5em; }
+    .hero p { font-size:1.2em; margin:20px 0; }
+    section { max-width:800px; margin:40px auto; background:#fff; padding:30px; border-radius:10px; box-shadow:0 2px 8px #ccc; }
+    h2 { color:#1565c0; }
+    .contact { background:#e3f2fd; padding:30px; border-radius:10px; margin-top:20px; }
+    footer { background:#0d47a1; color:#fff; text-align:center; padding:15px; margin-top:40px; }
+    .btn { background:#1565c0; color:#fff; padding:12px 24px; border:none; border-radius:5px; font-size:1em; cursor:pointer; }
+    .btn:hover { background:#0d47a1; }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <span class="logo-circle">TUTORÍAS EXPRESS</span>
-            <img src="images/rocket-logo.png" alt="Rocket Logo" style="width: 50px; height: 50px; vertical-align: middle;"> <!-- Placeholder for rocket image -->
-        </div>
-    </header>
-
-    <section class="welcome">
-        <h1>Bienvenido a Tutorías Express Colombia</h1>
-        <p>Acompañamiento académico para estudiantes de todos los niveles educativos de Colombia.</p>
-        <p><a href="#contacto">Más información</a></p>
-    </section>
-
-    <section class="services">
-        <h2>Nuestro Compromiso</h2>
-        <p>Impulsa tu trayectoria académica y laboral con tutores certificados y experiencia en Universidades, Colegios, Instituciones Financieras y hasta en la docencia presencial en Ciencias Naturales con más de 2 años de experiencia en la docencia personalizada.</p>
-        <p>Estudiantes desde la independencia y autocontención frente a las retos académicos mediante:</p>
-        <ul>
-            <li>Tutores especializados en Matemáticas, Física y Química en todos los niveles.</li>
-            <li>Educación flexible de alta calidad desde $50.000/hora.</li>
-            <li>Revisión crítica constructiva para proyectos finales de estudiantes porque que el estudiante entienda documente de calidad máxima.</li>
-        </ul>
-        <p>Selección de nivel educativo y escoge tu curso.</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="images/math-icon.png" alt="Math Icon"> <!-- Placeholder for math icon -->
-                <p>Matemáticas</p>
-            </div>
-            <div class="service-card">
-                <img src="images/science-icon.png" alt="Science Icon"> <!-- Placeholder for science icon -->
-                <p>Ciencias</p>
-            </div>
-            <div class="service-card">
-                <img src="images/chemistry-icon.png" alt="Chemistry Icon"> <!-- Placeholder for chemistry icon -->
-                <p>Química</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <h2>Ver más reseñas</h2>
-        <div class="testimonial">
-            <p>"Álvaro y Andrea, ¡Calculus questions where I understood it! Really kind and patient with great knowledge! (Realmente amable y paciente con gran conocimiento!)" - Elena</p>
-        </div>
-        <div class="testimonial">
-            <p>"Javier, Chemistry conversion up and he was very patient with me told I was doing a good job along the way. (Conversions de Química y fue muy paciente conmigo, diciéndome que estaba haciendo un buen trabajo en el camino.)" - Daniela</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>Para solicitudes de consulta y talleres, por favor contáctenos:</p>
-        <p>Teléfono: +57 300 123 4567 | +57 310 987 6543</p>
-        <p>Email: tutorias.express.colombia@gmail.com</p>
-        <p>Website: www.tutoriasexpresscolombia.com</p>
-    </footer>
+  <header>
+    <h1>Tutoras Express Colombia</h1>
+    <p>Educación personalizada y acompañamiento académico</p>
+  </header>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <div class="hero" id="inicio">
+    <h1>Bienvenidos a Tutoras Express Colombia</h1>
+    <p>Ofrecemos tutorías personalizadas para estudiantes de primaria y secundaria en Colombia. ¡Mejora tus resultados académicos con nuestro acompañamiento!</p>
+    <button class="btn" onclick="window.location='#contacto'">Contáctanos</button>
+  </div>
+  <section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <ul>
+      <li>Clases particulares de matemáticas, ciencias, inglés y más.</li>
+      <li>Preparación para exámenes y refuerzo escolar.</li>
+      <li>Modalidad virtual y presencial (según ubicación).</li>
+      <li>Profesores calificados y atención personalizada.</li>
+    </ul>
+  </section>
+  <section id="contacto" class="contact">
+    <h2>Contáctanos</h2>
+    <p>¿Listo para mejorar tus habilidades académicas? Escríbenos:</p>
+    <form>
+      <label for="name">Nombre:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+      <label for="email">Correo:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+      <label for="message">Mensaje:</label><br>
+      <textarea id="message" name="message" rows="4" required></textarea><br><br>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </section>
+  <footer>
+    &copy; 2025 Tutoras Express Colombia. Todos los derechos reservados.
+  </footer>
 </body>
 </html>
