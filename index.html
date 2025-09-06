@@ -2,63 +2,284 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Tutoras Express Colombia</title>
+  <title>Tutorías Express Colombia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f3f6fb; }
-    header { background:#0d47a1; color:#fff; padding:20px; text-align:center; }
-    nav { background:#1565c0; padding:10px 0; text-align:center; }
-    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
-    .hero { background:#e3f2fd; padding:50px 20px; text-align:center; }
-    .hero h1 { color:#0d47a1; font-size:2.5em; }
-    .hero p { font-size:1.2em; margin:20px 0; }
-    section { max-width:800px; margin:40px auto; background:#fff; padding:30px; border-radius:10px; box-shadow:0 2px 8px #ccc; }
-    h2 { color:#1565c0; }
-    .contact { background:#e3f2fd; padding:30px; border-radius:10px; margin-top:20px; }
-    footer { background:#0d47a1; color:#fff; text-align:center; padding:15px; margin-top:40px; }
-    .btn { background:#1565c0; color:#fff; padding:12px 24px; border:none; border-radius:5px; font-size:1em; cursor:pointer; }
-    .btn:hover { background:#0d47a1; }
+    :root {
+      --primary-bg: #23211b;
+      --primary-gold: #bfa159;
+      --main-text: #23211b;
+      --link-blue: #1565c0;
+      --card-bg: #ece9e2;
+      --section-bg: #fff;
+      --button-bg: #bfa159;
+      --button-text: #fff;
+      --review-bg: #f3f3f3;
+      --star-color: #ffc107;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #ece9e2;
+      margin: 0;
+      color: var(--main-text);
+    }
+    .container {
+      max-width: 650px;
+      margin: 30px auto;
+      background: var(--section-bg);
+      padding: 0 30px 30px 30px;
+      box-shadow: 0 4px 24px rgba(80,60,30,0.10);
+      border-radius: 8px;
+    }
+    .hero-img {
+      width: 100%;
+      max-height: 140px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+      background: #23211b;
+      display: block;
+      margin-top: 0;
+    }
+    .center {
+      text-align: center;
+    }
+    .title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 20px 0 5px 0;
+      color: var(--primary-bg);
+    }
+    .subtitle {
+      color: var(--link-blue);
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .icon-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 16px 0;
+    }
+    .icon-row img {
+      width: 30px;
+      height: 30px;
+    }
+    .desc {
+      margin: 20px 0 0 0;
+      font-size: 1em;
+      color: #444;
+      line-height: 1.6;
+    }
+    .section-title {
+      font-weight: bold;
+      color: var(--primary-bg);
+      margin-top: 28px;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    ul.commitment {
+      padding-left: 20px;
+      margin-bottom: 18px;
+    }
+    ul.commitment li {
+      margin-bottom: 8px;
+    }
+    .levels {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin: 18px 0 8px 0;
+    }
+    .level-btn {
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      padding: 6px 18px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(80,60,30,0.08);
+    }
+    .courses-row {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    .course-card {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 6px rgba(80,60,30,0.08);
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .course-card img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+    .reviews-section {
+      background: var(--review-bg);
+      border-radius: 7px;
+      padding: 16px;
+      margin-top: 24px;
+    }
+    .review {
+      margin-bottom: 15px;
+      font-size: 0.97em;
+    }
+    .review .reviewer {
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .review .stars {
+      color: var(--star-color);
+      font-size: 1em;
+      margin-right: 8px;
+    }
+    .review .subject {
+      font-weight: bold;
+      color: var(--link-blue);
+      margin-left: 6px;
+    }
+    .review .comment {
+      margin-left: 2px;
+      color: #444;
+      font-style: italic;
+      display: block;
+    }
+    .view-more-btn {
+      display: block;
+      margin: 22px auto 0 auto;
+      background: var(--primary-bg);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(80,60,30,0.12);
+      width: 180px;
+    }
+    .footer {
+      margin-top: 32px;
+      padding: 18px 0 0 0;
+      font-size: 0.95em;
+      text-align: center;
+      color: #666;
+    }
+    .footer .contact-info {
+      margin-bottom: 8px;
+      color: #23211b;
+    }
+    .footer a {
+      color: var(--link-blue);
+      text-decoration: none;
+      font-size: 0.97em;
+    }
+    @media (max-width: 700px) {
+      .container {
+        padding: 0 6px 18px 6px;
+      }
+      .courses-row, .levels {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .course-card {
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Tutoras Express Colombia</h1>
-    <p>Educación personalizada y acompañamiento académico</p>
-  </header>
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-  <div class="hero" id="inicio">
-    <h1>Bienvenidos a Tutoras Express Colombia</h1>
-    <p>Ofrecemos tutorías personalizadas para estudiantes de primaria y secundaria en Colombia. ¡Mejora tus resultados académicos con nuestro acompañamiento!</p>
-    <button class="btn" onclick="window.location='#contacto'">Contáctanos</button>
-  </div>
-  <section id="servicios">
-    <h2>Nuestros Servicios</h2>
-    <ul>
-      <li>Clases particulares de matemáticas, ciencias, inglés y más.</li>
-      <li>Preparación para exámenes y refuerzo escolar.</li>
-      <li>Modalidad virtual y presencial (según ubicación).</li>
-      <li>Profesores calificados y atención personalizada.</li>
+  <div class="container">
+    <!-- Logo Hero Image Placeholder -->
+    <img src="logo-placeholder.png" alt="Logo Tutorías Express" class="hero-img">
+    <div class="center">
+      <div class="title">Bienvenido a Tutorías Express Colombia</div>
+      <div class="subtitle">Acompañamiento académico para estudiantes de todos los niveles educativos</div>
+      <div class="icon-row">
+        <!-- Replace with actual icon images as needed -->
+        <img src="icon-placeholder1.png" alt="Icono académico">
+        <img src="icon-placeholder2.png" alt="Icono acompañamiento">
+        <img src="icon-placeholder3.png" alt="Icono tutoría">
+      </div>
+    </div>
+    <div class="desc">
+      Impulsa tu trayectoria académica y la de tus hijos con tutorías personalizadas y expertas en Física, Matemáticas y Química. Diseñadas para Primaria, Secundaria y Universitarios, impartidas en línea o domicilio por expertos en Ciencias Naturales con más de 12 años de experiencia en la docencia personalizada.
+    </div>
+    <div class="section-title">Nuestro Compromiso:</div>
+    <ul class="commitment">
+      <li>El estudiante desarrollará independencia y autoconfianza frente a los retos académicos modernos.</li>
+      <li>Tutorías especializadas en Matemáticas, Física y Química en todos los niveles educativos.</li>
+      <li>Sesiones flexibles y de alta calidad desde $50,000/hora.</li>
+      <li>Revisión continua y estricta en informes de progreso finales estudiantiles.</li>
+      <li>Educación de calidad entregada con documentos de calidad mínima.</li>
     </ul>
-  </section>
-  <section id="contacto" class="contact">
-    <h2>Contáctanos</h2>
-    <p>¿Listo para mejorar tus habilidades académicas? Escríbenos:</p>
-    <form>
-      <label for="name">Nombre:</label><br>
-      <input type="text" id="name" name="name" required><br><br>
-      <label for="email">Correo:</label><br>
-      <input type="email" id="email" name="email" required><br><br>
-      <label for="message">Mensaje:</label><br>
-      <textarea id="message" name="message" rows="4" required></textarea><br><br>
-      <button type="submit" class="btn">Enviar</button>
-    </form>
-  </section>
-  <footer>
-    &copy; 2025 Tutoras Express Colombia. Todos los derechos reservados.
-  </footer>
+    <div class="section-title">Selecciona un nivel educativo y escoge tu curso:</div>
+    <div class="levels">
+      <button class="level-btn">Primaria</button>
+      <button class="level-btn">Secundaria</button>
+      <button class="level-btn">Universidad</button>
+    </div>
+    <div class="courses-row">
+      <!-- Replace with actual course images -->
+      <div class="course-card">
+        <img src="course-math.png" alt="Curso Matemáticas">
+      </div>
+      <div class="course-card">
+        <img src="course-physics.png" alt="Curso Física">
+      </div>
+      <div class="course-card">
+        <img src="course-chemistry.png" alt="Curso Química">
+      </div>
+    </div>
+    <div class="reviews-section">
+      <div class="review">
+        <span class="reviewer">Aisha</span>
+        <span class="stars">★★★★★</span>
+        <span class="subject">Calculus</span>
+        <span class="comment">Very clear and helpful! Helped me solve many questions to achieve. I understood it.<br>
+        (Muy clara y excelente ayuda para preguntas hasta que las entendí.)</span>
+      </div>
+      <div class="review">
+        <span class="reviewer">Floyd</span>
+        <span class="stars">★★★★☆</span>
+        <span class="subject">Calculus</span>
+        <span class="comment">Kind and patient tutor with great knowledge.<br>
+        (Amable y paciente y muy buen conocimiento.)</span>
+      </div>
+      <div class="review">
+        <span class="reviewer">Elena</span>
+        <span class="stars">★★★★★</span>
+        <span class="subject">Chemistry</span>
+        <span class="comment">Truly made my child confident about the conversion topic and was very patient with me and said I was doing a good job along the way.<br>
+        (Muy buena enseñanza sobre convertir las conversiones y fue muy paciente conmigo, diciéndome que lo estaba haciendo bien en el camino.)</span>
+      </div>
+      <div class="review">
+        <span class="reviewer">Javier</span>
+        <span class="stars">★★★★★</span>
+        <span class="subject">Chemistry</span>
+        <span class="comment">Excellent tutor. Very approachable.<br>
+        (Excelente tutor. Muy agradable.)</span>
+      </div>
+    </div>
+    <a href="#" class="view-more-btn">Ver más reseñas</a>
+    <div class="footer">
+      <div class="contact-info">
+        Para solicitudes de consultoría y tutorías, por favor contáctanos:<br>
+        <b>+57 320 555 3826 &mdash; 311 653 5828<br>Bogotá D.C, Colombia</b><br>
+        <a href="mailto:tutoriasexpresscolombia@gmail.com">tutoriasexpresscolombia@gmail.com</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
