@@ -89,7 +89,21 @@
       gap: 18px;
       margin: 18px 0 8px 0;
     }
+    .level-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .level-img {
+      width: 100%;
+      max-width: 140px; /* matches button width */
+      margin-top: 8px;
+      border-radius: 4px;
+      box-shadow: 0 1px 6px rgba(80,60,30,0.08);
+      object-fit: contain;
+    }
     .level-btn {
+      width: 140px;
       background: var(--button-bg);
       color: var(--button-text);
       border: none;
@@ -99,6 +113,20 @@
       cursor: pointer;
       font-weight: bold;
       box-shadow: 0 2px 4px rgba(80,60,30,0.08);
+    }
+    @media (max-width: 700px) {
+      .levels {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .level-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      .level-img {
+        max-width: 140px;
+        width: 100%;
+      }
     }
     .courses-row {
       display: flex;
@@ -201,7 +229,7 @@
 <body>
   <div class="container">
     <!-- Logo Hero Image Placeholder -->
-    <img src="images/CabeceroC.jpg" alt="Logo for Tutorías Express Colombia featuring an icon of the Earth and the orbiting Moon inside a circular border. The text Tutorías Express is displayed in large gold letters above the rocket. The background is black, creating a professional and trustworthy atmosphere. The overall tone is welcoming and supportive, emphasizing academic guidance and confidence for students." class="hero-img">
+    <img src="images/Cabecero.jpg" alt="Logo for Tutorías Express Colombia featuring an icon of the Earth and the orbiting Moon inside a circular border. The text Tutorías Express is displayed in large gold letters above the rocket. The background is black, creating a professional and trustworthy atmosphere. The overall tone is welcoming and supportive, emphasizing academic guidance and confidence for students." class="hero-img">
     <div class="center">
       <div class="title">Bienvenido a Tutorías Express Colombia</div>
       <div class="subtitle">Acompañamiento académico para estudiantes de todos los niveles educativos</div>
@@ -221,28 +249,23 @@
     <ul class="commitment">
       <li>El estudiante desarrollará independencia y autoconfianza frente a los retos académicos modernos.</li>
       <li>Tutorías especializadas en Matemáticas, Física y Química en todos los niveles educativos.</li>
-      <li>Sesiones flexibles y de alta calidad desde $50,000/hora.</li>
-      <li>Revisión continua y estricta en informes de progreso finales estudiantiles.</li>
-      <li>Educación de calidad entregada con documentos de calidad mínima.</li>
+      <li>Sesiones flexibles y de alta calidad desde $80.000/hora + desplazamientos.</li>
+      <li>Revisión estricta en informes y proyectos finales estudiantiles buscando la calidad máxima.</li>
     </ul>
-    <div class="section-title">Selecciona un nivel educativo y escoge tu curso:</div>
     <div class="levels">
-      <button class="level-btn">Primaria</button>
-      <button class="level-btn">Secundaria</button>
-      <button class="level-btn">Universidad</button>
-    </div>
-    <div class="courses-row">
-      <!-- Replace with actual course images -->
-      <div class="course-card">
-        <img src="course-math.png" alt="Curso Matemáticas">
-      </div>
-      <div class="course-card">
-        <img src="course-physics.png" alt="Curso Física">
-      </div>
-      <div class="course-card">
-        <img src="course-chemistry.png" alt="Curso Química">
-      </div>
-    </div>
+  <div class="level-group">
+    <button class="level-btn">Primaria</button>
+    <img class="level-img" src="images/portada-boton-primaria.png" alt="Cursos Primaria">
+  </div>
+  <div class="level-group">
+    <button class="level-btn">Secundaria</button>
+    <img class="level-img" src="images/portada-boton-secundaria.png" alt="Cursos Secundaria">
+  </div>
+  <div class="level-group">
+    <button class="level-btn">Universitario</button>
+    <img class="level-img" src="images/portada-boton-universitario.png" alt="Cursos Universitario">
+  </div>
+</div>
     <div class="reviews-section">
       <div class="review">
         <span class="reviewer">Aisha</span>
