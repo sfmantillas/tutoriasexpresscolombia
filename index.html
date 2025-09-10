@@ -63,6 +63,23 @@
       width: 30px;
       height: 30px;
     }
+    .icon-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+    .icon-btn img {
+      width: 30px;
+      height: 30px;
+      transition: transform 0.2s;
+    }
+    .icon-btn:hover img {
+      transform: scale(1.15);
+    }
     .desc {
       margin: 20px 0 0 0;
       font-size: 1em;
@@ -261,13 +278,22 @@
       <div class="title">Bienvenido a Tutorías Express Colombia</div>
       <div class="subtitle">Acompañamiento académico para estudiantes de todos los niveles educativos</div>
       <div class="icon-row">
-        <!-- Replace with actual icon images as needed -->
-        <img src="images/icon-instagram.png" alt="Icono académico">
-        <img src="images/icon-youtube.png" alt="Icono acompañamiento">
-        <img src="images/icon-x.png" alt="Icono acompañamiento">
-        <img src="images/icon-linkedin.png" alt="Icono tutoría">
-        <img src="images/icon-whatsapp.png" alt="Icono tutoría">
-      </div>
+      <button class="icon-btn" title="Instagram" onclick="window.open('https://instagram.com/tutoriasexpresscolombia','_blank')">
+        <img src="images/icon-instagram.png" alt="Instagram">
+      </button>
+      <button class="icon-btn" title="YouTube" onclick="window.open('https://youtube.com/@TutoriasExpressColombia','_blank')">
+        <img src="images/icon-youtube.png" alt="YouTube">
+      </button>
+      <button class="icon-btn" title="X (Twitter)" onclick="window.open('https://x.com/tutoriasexpressco','_blank')">
+        <img src="images/icon-x.png" alt="X">
+      </button>
+      <button class="icon-btn" title="LinkedIn" onclick="window.open('https://linkedin.com/company/tutoriasexpresscolombia','_blank')">
+        <img src="images/icon-linkedin.png" alt="LinkedIn">
+      </button>
+      <button class="icon-btn" title="WhatsApp" onclick="window.open('https://wa.me/573205553826','_blank')">
+        <img src="images/icon-whatsapp.png" alt="WhatsApp">
+      </button>
+    </div>
     </div>
     <div class="desc">
       Impulsa tu trayectoria académica y la de tus hijos con tutorías personalizadas y expertas en Física, Matemáticas y Química. Diseñadas para Primaria, Secundaria y Universitarios, impartidas en línea o domicilio por expertos en Ciencias Naturales con más de 12 años de experiencia en la docencia personalizada.
@@ -281,19 +307,19 @@
     </ul>
     <div class="levels">
   <div class="level-group">
-    <button class="level-btn">Primaria</button>
+    <button title="Haz click y explora nuestra oferta para Primaria" class="level-btn">Primaria</button>
       <button class="level-img-btn">
       <img class="level-img" src="images/portada-boton-primaria.png" alt="Cursos Primaria">
     </button>
   </div>
   <div class="level-group">
-    <button class="level-btn">Secundaria</button>
+    <button title="Haz click y explora nuestra oferta para Secundaria" class="level-btn">Secundaria</button>
     <button class="level-img-btn">
       <img class="level-img" src="images/portada-boton-secundaria.png" alt="Cursos Secundaria">
     </button>
   </div>
   <div class="level-group">
-    <button class="level-btn">Universitario</button>
+    <button title="Haz click y explora nuestra oferta para Universitario" class="level-btn">Universitario</button>
     <button class="level-img-btn">
       <img class="level-img" src="images/portada-boton-universitario.png" alt="Cursos Universitario">
     </button>
@@ -329,7 +355,7 @@
         (Excelente tutor. Muy agradable.)</span>
       </div>
     </div>
-    <a href="#" class="view-more-btn">Ver más reseñas</a>
+    <a title="Haz click y lee todas las reseñas" href="#" class="view-more-btn">Ver más reseñas</a>
     <div class="footer">
       <div class="contact-info">
         Para solicitudes de consultoría y tutorías, por favor contáctanos:<br>
