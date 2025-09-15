@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root {
-      --primary-bg: #23211b;
+      --primary-bg: #11100d;
       --primary-gold: #bfa159;
       --main-text: #23211b;
       --link-blue: #1565c0;
@@ -22,6 +22,53 @@
       background: #ece9e2;
       margin: 0;
       color: var(--main-text);
+    }
+    /* Navigation Bar */
+    .navbar {
+      background: var(--primary-bg);
+      padding: 0px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .logo {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: var(--primary-gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary-gold);
+    }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
     }
     .container {
       max-width: 650px;
@@ -281,10 +328,31 @@
   <meta property="og:image:height" content="512">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sfmantillas.github.io/tutoriasexpresscolombia/">
+  
 </head>
+
 <body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/icon-tutoriasexpress.png" alt="Logo Tutorías Express">
+      Tutorías Express
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="primaria.html" class="active">Primaria</a></li>
+      <li><a href="secundaria.html">Secundaria</a></li>
+      <li><a href="universitario.html">Universitario</a></li>
+      <li><a href="#">Agenda</a></li>
+      <li><a href="reviews.html">Reseñas</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+
   <div class="container">
-    <!-- Logo Hero Image Placeholder -->
+    <!-- Logo Hero Image Placeholder  -->
     <img src="images/Cabecero.png" alt="Logo for Tutorías Express Colombia featuring an icon of the Earth and the orbiting Moon inside a circular border. The text Tutorías Express is displayed in large gold letters above the rocket. The background is black, creating a professional and trustworthy atmosphere. The overall tone is welcoming and supportive, emphasizing academic guidance and confidence for students." class="hero-img">
     <div class="center">
       <div class="title">Bienvenido a Tutorías Express Colombia</div>
@@ -293,13 +361,16 @@
       <button class="icon-btn" title="Instagram" onclick="window.open('https://instagram.com/tutoriasexpresscolombia','_blank')">
         <img src="images/icon-instagram.png" alt="Instagram">
       </button>
+      <button class="icon-btn" title="Google Scholar" onclick="window.open('https://scholar.google.com/citations?user=ktmAC_MAAAAJ&hl=es&oi=ao','_blank')">
+        <img src="images/icon-google-scholar.png" alt="Google Scholar">
+      </button>
       <button class="icon-btn" title="YouTube" onclick="window.open('https://youtube.com/@TutoriasExpressColombia','_blank')">
         <img src="images/icon-youtube.png" alt="YouTube">
       </button>
       <button class="icon-btn" title="X (Twitter)" onclick="window.open('https://x.com/tutoriasexpressco','_blank')">
         <img src="images/icon-x.png" alt="X">
       </button>
-      <button class="icon-btn" title="LinkedIn" onclick="window.open('https://linkedin.com/company/tutoriasexpresscolombia','_blank')">
+      <button class="icon-btn" title="LinkedIn" onclick="window.open('https://www.linkedin.com/in/sebastian-mantilla-serrano/','_blank')">
         <img src="images/icon-linkedin.png" alt="LinkedIn">
       </button>
       <button class="icon-btn" title="WhatsApp" onclick="window.open('https://wa.me/573205553826','_blank')">
