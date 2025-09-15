@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<!-- Declares the document as HTML5 for modern rendering support -->
+<html lang="es">
+<!-- Root element with Spanish language for accessibility and SEO -->
+<head>
+  <!-- Metadata section containing character encoding -->
+  <meta charset="UTF-8">
+  <!-- Sets UTF-8 encoding for international characters -->
+  <title>Tutorías Express Colombia - Agenda tu cita</title>
+  <!-- Page title displayed in browser tab -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ensures responsive design by setting viewport to device width with no initial zoom -->
+  <style>
+    /* CSS styles for the entire page */
+    :root {
+      /* CSS custom properties (variables) for consistent theming */
+      --primary-bg: #11100d;
+      /* Dark background color for navbar */
+      --primary-gold: #bfa159;
+      /* Gold accent color */
+      --main-text: #23211b;
+      /* Main text color */
+      --link-blue: #1565c0;
+      /* Blue color for links */
+      --card-bg: #ece9e2;
+      /* Background for cards */
+      --section-bg: #fff;
+      /* White background for sections */
+      --button-bg: #bfa159;
+      /* Gold background for buttons */
+      --button-text: #fff;
+      /* White text for buttons */
+      --review-bg: #f3f3f3;
+      /* Light gray for reviews */
+      --star-color: #ffc107;
+      /* Yellow for stars */
+    }
+    body {
+      /* Main body styles */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      /* Font stack for cross-browser compatibility */
+      background: #ece9e2;
+      /* Light beige background */
+      margin: 0;
+      /* No default margins */
+      color: var(--main-text);
+      /* Use main text color variable */
+    }
+    /* Navigation Bar styles */
+    .navbar {
+      /* Top navigation bar */
+      background: var(--primary-bg);
+      /* Dark background */
+      padding: 0px 10px;
+      /* Minimal padding for compact look */
+      display: flex;
+      /* Flexbox for horizontal layout */
+      justify-content: space-between;
+      /* Space logo and menu apart */
+      align-items: center;
+      /* Vertically center items */
+      color: white;
+      /* White text */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      /* Subtle shadow for depth */
+      position: relative;
+      /* Relative positioning for dropdown context */
+    }
+    .logo {
+      /* Logo section in navbar */
+      font-size: 1.2em;
+      /* Larger font for logo text */
+      font-weight: bold;
+      /* Bold weight */
+      color: var(--primary-gold);
+      /* Gold color */
+      display: flex;
+      /* Flex for logo image and text */
+      align-items: center;
+      /* Center align */
+      gap: 10px;
+      /* Space between image and text */
+    }
+    .logo img {
+      /* Logo image */
+      height: 50px;
+      /* Fixed height */
+      width: auto;
+      /* Maintain aspect ratio */
+    }
+    .nav-links {
+      /* Navigation links list */
+      display: flex;
+      /* Horizontal flex by default */
+      list-style: none;
+      /* No bullets */
+      margin: 0;
+      /* No margins */
+      padding: 0;
+      /* No padding */
+      gap: 20px;
+      /* Space between links */
+    }
+    .nav-links a {
+      /* Individual nav links */
+      color: white;
+      /* White text */
+      text-decoration: none;
+      /* No underline */
+      font-weight: 500;
+      /* Medium weight */
+      transition: color 0.2s;
+      /* Smooth color change on hover */
+    }
+    .nav-links a:hover,
+    /* Hover state for links */
+    .nav-links a.active {
+      /* Active state */
+      color: var(--primary-gold);
+      /* Gold on hover/active */
+    }
+    .hamburger {
+      /* Hamburger menu button */
+      display: none;
+      /* Hidden by default (desktop) */
+      background: none;
+      /* No background */
+      border: none;
+      /* No border */
+      color: white;
+      /* White icon */
+      font-size: 1.5em;
+      /* Larger icon */
+      cursor: pointer;
+      /* Pointer cursor */
+    }
+    .container {
+      /* Main content container */
+      max-width: 650px;
+      /* Max width for readability */
+      margin: 30px auto;
+      /* Center with margins */
+      background: var(--section-bg);
+      /* White background */
+      padding: 0 30px 30px 30px;
+      /* Padding inside */
+      box-shadow: 0 4px 24px rgba(80,60,30,0.10);
+      /* Subtle shadow */
+      border-radius: 8px;
+      /* Rounded corners */
+    }
+    .hero-img {
+      /* Hero image section */
+      width: 100%;
+      /* Full width */
+      height: auto;
+      /* Auto height */
+      border-radius: 8px 8px 0 0;
+      /* Rounded top corners */
+      background: #23211b;
+      /* Dark fallback background */
+      display: block;
+      /* Block display */
+      margin-top: 0;
+      /* No top margin */
+      position: relative;
+      /* Relative for overlay positioning */
+    }
+    .hero-img img {
+      /* Hero image itself */
+      width: 100%;
+      /* Full width */
+      height: auto;
+      /* Auto height */
+      display: block;
+      /* Block for full width */
+      filter: brightness(50%);
+      /* Darken image to 50% brightness */
+    }
+    .hero-text {
+      /* Overlay text on hero image */
+      position: absolute;
+      /* Absolute positioning over image */
+      top: 50%;
+      /* 50% from top */
+      left: 50%;
+      /* 50% from left */
+      transform: translate(-50%, -50%);
+      /* Center exactly */
+      color: white;
+      /* White text */
+      font-size: 5em;
+      /* Large font */
+      font-weight: bold;
+      /* Bold weight */
+      text-align: center;
+      /* Center text */
+      width: 100%;
+      /* Full width */
+      padding: 0 20px;
+      /* Side padding */
+      box-sizing: border-box;
+      /* Include padding in width */
+      mix-blend-mode: normal;
+      /* Normal blending to avoid filter effect on text */
+    }
+    .center {
+      /* Center alignment utility */
+      text-align: center;
+      /* Center text */
+    }
+    .title {
+      /* Page title styles */
+      font-size: 1.5em;
+      /* Medium-large font */
+      font-weight: bold;
+      /* Bold */
+      margin: 20px 0 5px 0;
+      /* Spacing */
+      color: var(--primary-bg);
+      /* Dark text */
+    }
+    .subtitle {
+      /* Subtitle styles */
+      color: var(--link-blue);
+      /* Blue color */
+      font-weight: bold;
+      /* Bold */
+      font-size: 1.1em;
+      /* Slightly larger */
+    }
+    /* Course Sections - Adapted for schedule-related sections */
+    .schedule-section {
+      /* Container for scheduling section */
+      display: block;
+      /* Block display */
+      margin-bottom: 20px;
+      /* Space below */
+      background: #f9f9f9;
+      /* Light background */
+      padding: 20px;
+      /* Padding inside */
+      border-radius: 8px;
+      /* Rounded corners */
+    }
+    .data-policy-section {
+      /* Container for data policy section */
+      margin-bottom: 20px;
+      /* Space below */
+      background: #f9f9f9;
+      /* Light background */
+      padding: 20px;
+      /* Padding inside */
+      border-radius: 8px;
+      /* Rounded corners */
+    }
+    .schedule-form label {
+      /* Labels for form fields */
+      display: block;
+      /* Block for full width */
+      margin-bottom: 5px;
+      /* Small space below */
+      font-weight: bold;
+      /* Bold text */
+      color: var(--main-text);
+      /* Main text color */
+    }
+    .schedule-form input,
+    /* Styles for all inputs */
+    .schedule-form select,
+    /* Styles for selects */
+    .schedule-form textarea {
+      /* Styles for textarea */
+      width: 100%;
+      /* Full width */
+      padding: 10px;
+      /* Padding inside */
+      margin-bottom: 15px;
+      /* Space below */
+      border: 1px solid #ccc;
+      /* Light border */
+      border-radius: 4px;
+      /* Rounded corners */
+      box-sizing: border-box;
+      /* Include padding in width */
+      font-size: 1em;
+      /* Standard font size */
+    }
+    .schedule-form input[type="date"],
+    /* Date input specific */
+    .schedule-form input[type="time"] {
+      /* Time input specific */
+      min-width: 200px;
+      /* Minimum width for usability */
+    }
+    .schedule-btn {
+      /* Submit button for form */
+      width: 100%;
+      /* Full width */
+      background: var(--button-bg);
+      /* Gold background */
+      color: var(--button-text);
+      /* White text */
+      border: none;
+      /* No border */
+      border-radius: 4px;
+      /* Rounded */
+      padding: 12px;
+      /* Padding */
+      font-size: 1.1em;
+      /* Larger font */
+      cursor: pointer;
+      /* Pointer cursor */
+      font-weight: bold;
+      /* Bold */
+      box-shadow: 0 2px 4px rgba(80,60,30,0.08);
+      /* Shadow */
+      transition: transform 0.2s;
+      /* Hover animation */
+    }
+    .schedule-btn:hover {
+      /* Hover effect */
+      transform: scale(1.05);
+      /* Slight scale up */
+    }
+    .footer {
+      /* Footer styles */
+      margin-top: 32px;
+      /* Space above */
+      padding: 18px 0 0 0;
+      /* Top padding */
+      font-size: 0.95em;
+      /* Smaller font */
+      text-align: center;
+      /* Center text */
+      color: #666;
+      /* Gray color */
+    }
+    .footer .contact-info {
+      /* Contact info in footer */
+      margin-bottom: 8px;
+      /* Space below */
+      color: #23211b;
+      /* Dark text */
+    }
+    .footer a {
+      /* Footer links */
+      color: var(--link-blue);
+      /* Blue color */
+      text-decoration: none;
+      /* No underline */
+      font-size: 0.97em;
+      /* Slightly smaller */
+    }
+    /* Media Queries for Mobile vs PC */
+    @media (max-width: 700px) {
+      /* Mobile styles */
+      .navbar {
+        /* Navbar on mobile */
+        padding: 10px 15px;
+        /* More padding */
+      }
+      .nav-links {
+        /* Nav links on mobile - hidden by default */
+        display: none;
+        /* Hidden */
+        position: absolute;
+        /* Absolute for dropdown */
+        top: 100%;
+        /* Below navbar */
+        left: 0;
+        /* Left aligned */
+        width: 100%;
+        /* Full width */
+        background: var(--primary-bg);
+        /* Dark background */
+        flex-direction: column;
+        /* Vertical stack */
+        padding: 10px 0;
+        /* Vertical padding */
+        z-index: 1000;
+        /* Above other content */
+      }
+      .nav-links.active {
+        /* Active dropdown */
+        display: flex;
+        /* Show */
+      }
+      .hamburger {
+        /* Show hamburger on mobile */
+        display: block;
+        /* Visible */
+      }
+      .container {
+        /* Container on mobile */
+        padding: 0 6px 18px 6px;
+        /* Reduced padding */
+        margin: 10px auto;
+        /* Smaller margins */
+      }
+      .hero-text {
+        /* Hero text on mobile */
+        font-size: 2em;
+        /* Smaller font */
+      }
+    }
+    @media (min-width: 701px) {
+      /* Desktop styles */
+      .hamburger {
+        /* Hide hamburger on desktop */
+        display: none;
+        /* Hidden */
+      }
+      .nav-links {
+        /* Show nav links on desktop */
+        display: flex;
+        /* Visible horizontal */
+      }
+    }
+  </style>
+  
+  <!-- Favicon for browser tab - small icon in tab -->
+  <link rel="icon" type="image/png" href="images/icon-tutoriasexpress.png">
+  
+  <!-- Open Graph Meta Tags for social media sharing -->
+  <meta property="og:title" content="Tutorías Express Colombia - Agenda tu cita">
+  <!-- Title for social previews -->
+  <meta property="og:description" content="Programa tu cita para tutorías personalizadas.">
+  <!-- Description for social previews -->
+  <meta property="og:image" content="https://sfmantillas.github.io/tutoriasexpresscolombia/images/icon-tutoriasexpress.png">
+  <!-- Image for social previews -->
+  <meta property="og:image:width" content="512">
+  <!-- Image width -->
+  <meta property="og:image:height" content="512">
+  <!-- Image height -->
+  <meta property="og:type" content="website">
+  <!-- Content type -->
+  <meta property="og:url" content="https://sfmantillas.github.io/tutoriasexpresscolombia/agenda.html">
+  <!-- Canonical URL -->
+</head>
+<body>
+  <!-- Navigation Bar - top menu bar -->
+  <nav class="navbar">
+    <!-- Logo container -->
+    <div class="logo">
+      <!-- Logo image -->
+      <img src="images/icon-tutoriasexpress.png" alt="Logo Tutorías Express">
+      <!-- Logo text -->
+      Tutorías Express
+    </div>
+    <!-- Navigation links list -->
+    <ul class="nav-links">
+      <!-- Home link -->
+      <li><a href="index.html">Inicio</a></li>
+      <!-- Primaria link -->
+      <li><a href="primaria.html">Primaria</a></li>
+      <!-- Secundaria link -->
+      <li><a href="secundaria.html">Secundaria</a></li>
+      <!-- Universitario link -->
+      <li><a href="universidad.html">Universidad</a></li>
+      <!-- Agenda link - active -->
+      <li><a href="agenda.html" class="active">Agenda</a></li>
+      <!-- Reviews link -->
+      <li><a href="reviews.html">Reseñas</a></li>
+      <!-- Contact link -->
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <!-- Hamburger button for mobile menu -->
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Image with Darkened Effect and Centered Title -->
+    <div class="hero-img">
+      <!-- Hero image -->
+      <img src="images/agenda/agenda.png" alt="Imagen representativa de una agenda o calendario para citas.">
+      <!-- Overlay text -->
+      <div class="hero-text">Agenda tu cita</div>
+    </div>
+
+    <!-- Schedule Section - form for booking -->
+    <section class="schedule-section">
+      <!-- Section title -->
+      <div class="title">Programa tu cita</div>
+      <!-- Form for scheduling -->
+      <form class="schedule-form" id="scheduleForm">
+        <!-- Name label -->
+        <label for="name">Nombre completo:*</label>
+        <!-- Name input -->
+        <input type="text" id="name" name="name" required>
+        <!-- Email label -->
+        <label for="email">Correo electrónico:*</label>
+        <!-- Email input -->
+        <input type="email" id="email" name="email" required>
+        <!-- Educational level label -->
+        <label for="eduLevel">Nivel educativo:*</label>
+        <!-- Educational level select -->
+        <select id="eduLevel" name="eduLevel" required onchange="updateSubjects()">
+          <option value="" disabled selected>Selecciona un nivel educativo</option>
+          <option value="primaria">Primaria</option>
+          <option value="secundaria">Secundaria</option>
+          <option value="universidad">Universidad</option>
+        </select>
+        <!-- Subject label -->
+        <label for="subject">Asignatura:*</label>
+        <!-- Subject select -->
+        <select id="subject" name="subject" required>
+          <option value="" disabled selected>Selecciona una asignatura</option>
+        </select>
+        <!-- First proposal label -->
+
+        Haz tres propuestas sobre día y hora en las cuales deseas tener tu cita. La primera es obligatoria y las siguientes opcionales. 
+
+        Si ninguna de las propuestas es viable, te contactaremos para acordar una nueva fecha y hora.
+        <br><br>
+        <label for="date1">Propuesta 1 - Fecha:*</label>
+        <!-- First date input -->
+        <input type="date" id="date1" name="date1" required>
+        <!-- First time label -->
+        <label for="time1">Propuesta 1 - Hora:*</label>
+        <!-- First time input -->
+        <input type="time" id="time1" name="time1" required>
+        <!-- Second proposal label -->
+        <label for="date2">Propuesta 2 - Fecha:*</label>
+        <!-- Second date input -->
+        <input type="date" id="date2" name="date2" required>
+        <!-- Second time label -->
+        <label for="time2">Propuesta 2 - Hora:*</label>
+        <!-- Second time input -->
+        <input type="time" id="time2" name="time2" required>
+        <!-- Third proposal label -->
+        <label for="date3">Propuesta 3 - Fecha:*</label>
+        <!-- Third date input -->
+        <input type="date" id="date3" name="date3" required>
+        <!-- Third time label -->
+        <label for="time3">Propuesta 3 - Hora:*</label>
+        <!-- Third time input -->
+        <input type="time" id="time3" name="time3" required>
+        <!-- Problem description label -->
+        <label for="problem">Descripción del problema:*</label>
+        <!-- Textarea for problem description -->
+        <textarea id="problem" name="problem" rows="4" required placeholder="Proporciona una descripción del problema académico o el enunciado exacto de la pregunta en la que necesitas asistencia. Esto permitirá al tutor preparar una sesión personalizada y eficiente."></textarea>
+        <!-- Submit button -->
+        <button type="submit" class="schedule-btn">Enviar propuestas</button>
+      </form>
+    </section>
+
+    <!-- Data Policy Section -->
+    <section class="data-policy-section">
+      <!-- Section subtitle -->
+      <div class="subtitle">Política de Protección de Datos:</div>
+      <!-- Policy text -->
+      <div class="text">En cumplimiento de la Ley 1581 de 2012 (Régimen General de Protección de Datos Personales), los datos de contacto proporcionados (correo electrónico y teléfono celular) serán utilizados exclusivamente para coordinar y confirmar tu cita. Estos datos serán eliminados de nuestros registros una vez finalizada la sesión, garantizando la seguridad y confidencialidad de tu información.</div>
+    </section>
+
+    <div class="footer">
+      <!-- Footer contact info -->
+      <div class="contact-info">
+        <!-- Contact text -->
+        Para solicitudes de consultoría y tutorías, por favor contáctanos:<br>
+        <!-- Phone numbers -->
+        <b>+57 320 555 3826 &mdash; 311 653 5828<br>Bogotá D.C, Colombia</b><br>
+        <!-- Email link -->
+        <a href="mailto:tutoriasexpresscolombia@gmail.com">tutoriasexpresscolombia@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- EmailJS script for client-side email sending -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- Main JavaScript for form handling and menu toggle -->
+  <script>
+    // Initialize EmailJS with your public key (replace with actual key from EmailJS dashboard)
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace "YOUR_PUBLIC_KEY" with your actual EmailJS public key
+
+    // Function to prevent past dates/times
+    function preventPastDates() {
+      // Get current date and time (e.g., 2025-09-15 03:41 AM -05)
+      const now = new Date();
+      // Format current date for min attribute (YYYY-MM-DD)
+      const currentDate = now.toISOString().split('T')[0];
+      // Format current time for min attribute (HH:MM), adjusting for -05 timezone
+      const currentTime = now.toTimeString().split(' ')[0].substring(0, 5);
+
+      // Set min for all date inputs
+      const dateInputs = document.querySelectorAll('input[type="date"]');
+      dateInputs.forEach(input => {
+        input.min = currentDate;
+      });
+
+      // For time inputs, set min to current time if date is today
+      dateInputs.forEach((dateInput, index) => {
+        dateInput.addEventListener('change', () => {
+          const timeInput = document.getElementById(`time${index + 1}`);
+          if (dateInput.value === currentDate) {
+            timeInput.min = currentTime;
+          } else {
+            timeInput.removeAttribute('min'); // Allow any time if future date
+          }
+        });
+      });
+    }
+
+    // Call preventPastDates on load
+    document.addEventListener('DOMContentLoaded', preventPastDates);
+
+    // Function to update subjects based on educational level
+    function updateSubjects() {
+      // Get selected educational level
+      const eduLevel = document.getElementById('eduLevel').value;
+      const subjectSelect = document.getElementById('subject');
+      // Clear current options
+      subjectSelect.innerHTML = '<option value="" disabled selected>Selecciona una asignatura</option>';
+
+      // Define subjects by level
+      const subjects = {
+        primaria: ['Matemáticas', 'Ciencias Naturales', 'Inglés'],
+        secundaria: ['Matemáticas', 'Física', 'Química'],
+        universidad: ['Matemáticas Avanzadas', 'Física Teórica', 'Química Orgánica']
+      };
+
+      // Populate subject dropdown based on level
+      if (eduLevel && subjects[eduLevel]) {
+        subjects[eduLevel].forEach(subject => {
+          const option = document.createElement('option');
+          option.value = subject.toLowerCase().replace(/ /g, '');
+          option.textContent = subject;
+          subjectSelect.appendChild(option);
+        });
+      }
+    }
+
+    // Call updateSubjects when educational level changes
+    document.getElementById('eduLevel').addEventListener('change', updateSubjects);
+
+    // Function to generate ICS string for a single event
+    function generateICS(subject, date, time, name, email, problem) {
+      // Get current timestamp for DTSTAMP
+      const now = new Date().toISOString().replace(/[:-]|\.\d{3}/g, '').replace('T', '');
+      // Parse date and time for DTSTART (assume 1-hour duration)
+      const eventDateTime = new Date(`${date}T${time}:00`).toISOString().replace(/[:-]|\.\d{3}/g, '').replace('T', '');
+      // End time (add 1 hour)
+      const endDateTime = new Date(new Date(`${date}T${time}:00`).getTime() + 60 * 60 * 1000).toISOString().replace(/[:-]|\.\d{3}/g, '').replace('T', '');
+      // Unique UID
+      const uid = `tutorias-${Date.now()}-${Math.random().toString(36).substr(2, 9)}@tutoriasexpresscolombia.com`;
+
+      // Build ICS string
+      const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Tutorías Express//NONSGML v1.0//EN',
+        'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        `UID:${uid}`,
+        `DTSTAMP:${now}`,
+        `DTSTART:${eventDateTime}`,
+        `DTEND:${endDateTime}`,
+        `SUMMARY:${subject} - Tutoria con ${name}`,
+        `DESCRIPTION:Estudiante: ${name}\\nEmail: ${email}\\nSolicitud de tutoría en ${subject}\\nProblema: ${problem}`,
+        'LOCATION:En línea o domicilio (Bogotá D.C.)',
+        'STATUS:CONFIRMED',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      return ics;
+    }
+
+    // Form submission handler
+    document.getElementById('scheduleForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Get form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const date1 = document.getElementById('date1').value;
+      const time1 = document.getElementById('time1').value;
+      const date2 = document.getElementById('date2').value;
+      const time2 = document.getElementById('time2').value;
+      const date3 = document.getElementById('date3').value;
+      const time3 = document.getElementById('time3').value;
+      const problem = document.getElementById('problem').value;
+
+      // Generate three ICS strings
+      const ics1 = generateICS(subject, date1, time1, name, email, problem);
+      const ics2 = generateICS(subject, date2, time2, name, email, problem);
+      const ics3 = generateICS(subject, date3, time3, name, email, problem);
+
+      // Prepare email parameters (replace with your EmailJS template ID and service ID)
+      const templateParams = {
+        to_email: 'tutoriasexpresscolombia@gmail.com', // Recipient email
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        proposals: `
+          Propuesta 1: ${date1} a las ${time1} (ICS: ${ics1})
+          Propuesta 2: ${date2} a las ${time2} (ICS: ${ics2})
+          Propuesta 3: ${date3} a las ${time3} (ICS: ${ics3})
+        `,
+        message: `Solicitud de cita para ${subject} de ${name} (${email}). Propuestas adjuntas en formato ICS para Google Calendar. Problema: ${problem}`
+      };
+
+      // Send email via EmailJS (replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID')
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+          console.log('Email sent successfully!', response.status, response.text);
+          alert('Tu solicitud ha sido enviada. Te contactaremos pronto.');
+          document.getElementById('scheduleForm').reset(); // Reset form
+        }, function(error) {
+          console.log('Failed to send email. ', error);
+          alert('Error al enviar la solicitud. Por favor, inténtalo de nuevo.');
+        });
+    });
+
+    // Hamburger menu toggle function
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      const navbar = document.querySelector('.navbar');
+      const isActive = navLinks.classList.contains('active');
+
+      if (isActive) {
+        navLinks.classList.remove('active');
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.classList.add('active');
+        navLinks.style.display = 'flex';
+        navLinks.style.top = `${navbar.offsetHeight}px`; // Position below navbar
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.background = 'var(--primary-bg)';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.padding = '10px 0';
+        navLinks.style.zIndex = '1000'; // Ensure it stays above other content
+      }
+    }
+  </script>
+</body>
+</html>
