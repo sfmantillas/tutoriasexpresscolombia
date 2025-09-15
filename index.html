@@ -317,6 +317,20 @@
       .course-card {
         margin: 0 auto;
       }
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+    @media (min-width: 701px) {
+      .hamburger {
+        display: none;
+      }
+      .nav-links {
+        display: flex;
+      }
     }
   </style>
   
@@ -393,21 +407,21 @@
     <div class="levels">
   <div class="level-group">
     <a href="primaria.html" class="level-btn" title="Haz click y explora nuestra oferta para Primaria">Primaria</a>
-    <button class="level-img-btn">
+    <a href="primaria.html" class="level-img-btn">
       <img class="level-img" src="images/portada-boton-primaria.png" alt="Cursos Primaria">
-    </button>
+    </a>
   </div>
   <div class="level-group">
     <a href="secundaria.html" class="level-btn" title="Haz click y explora nuestra oferta para Secundaria">Secundaria</a>
-    <button class="level-img-btn">
+    <a href="secundaria.html" class="level-img-btn">
       <img class="level-img" src="images/portada-boton-secundaria.png" alt="Cursos Secundaria">
-    </button>
+    </a>
   </div>
   <div class="level-group">
     <a href="universitario.html" class="level-btn" title="Haz click y explora nuestra oferta para Universitario">Universitario</a>
-    <button class="level-img-btn">
+    <a href="universitario.html" class="level-img-btn">
       <img class="level-img" src="images/portada-boton-universitario.png" alt="Cursos Universitario">
-    </button>
+    </a>
   </div>
 </div>
     <div class="reviews-section">
@@ -449,5 +463,19 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.background = 'var(--primary-bg)';
+      navLinks.style.width = '100%';
+      navLinks.style.top = '100%';
+      navLinks.style.left = '0';
+      navLinks.style.padding = '10px 0';
+    }
+  </script>
 </body>
 </html>
