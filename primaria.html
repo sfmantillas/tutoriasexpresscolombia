@@ -32,6 +32,7 @@
       align-items: center;
       color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative; /* Establish positioning context */
     }
     .logo {
       font-size: 1.2em;
@@ -212,19 +213,26 @@
       font-size: 0.97em;
     }
     /* Media Queries for Mobile vs PC */
-    @media (max-width: 700px) {
-      .navbar {
-        padding: 10px 15px;
-      }
+    @media (max-width: 800px) {
       .nav-links {
-        display: none;
+        display: none; /* Hidden by default on mobile */
+        position: absolute;
+        top: 100%; /* Start below navbar */
+        left: 0;
+        width: 100%;
+        background: var(--primary-bg);
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 1000; /* Ensure it stays above other content */
+      }
+      .nav-links.active {
+        display: flex; /* Show when active */
       }
       .hamburger {
         display: block;
       }
       .container {
         padding: 0 6px 18px 6px;
-        margin: 10px auto;
       }
       .course-section {
         flex-direction: column;
@@ -239,12 +247,18 @@
         font-size: 2em; /* Slightly smaller for mobile readability */
       }
     }
-    @media (min-width: 701px) {
+    @media (min-width: 801px) {
       .course-section {
         align-items: flex-start;
       }
       .math-icons {
         flex-direction: column;
+      }
+      .hamburger {
+        display: none;
+      }
+      .nav-links {
+        display: flex;
       }
     }
   </style>
@@ -283,7 +297,7 @@
   <div class="container">
     <!-- Hero Image with Darkened Effect and Centered Title -->
     <div class="hero-img">
-      <img src="images/primaria/primariaA.png" alt="Aula de clases para primaria con globo terráqueo y libros, evocando aprendizaje interactivo.">
+      <img src="images/primaria/primaria.png" alt="Aula de clases para primaria con globo terráqueo y libros, evocando aprendizaje interactivo.">
       <div class="hero-text">Primaria</div>
     </div>
 
@@ -359,14 +373,23 @@
   <script>
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.position = 'absolute';
-      navLinks.style.background = 'var(--primary-bg)';
-      navLinks.style.width = '100%';
-      navLinks.style.top = '100%';
-      navLinks.style.left = '0';
-      navLinks.style.padding = '10px 0';
+      const navbar = document.querySelector('.navbar');
+      const isActive = navLinks.classList.contains('active');
+
+      if (isActive) {
+        navLinks.classList.remove('active');
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.classList.add('active');
+        navLinks.style.display = 'flex';
+        navLinks.style.top = `${navbar.offsetHeight}px`; // Position below navbar
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.background = 'var(--primary-bg)';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.padding = '10px 0';
+        navLinks.style.zIndex = '1000'; // Ensure it stays above other content
+      }
     }
   </script>
 </body>
