@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tutorías Express Colombia - Primaria</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-bg: #11100d;
+      --primary-gold: #bfa159;
+      --main-text: #23211b;
+      --link-blue: #1565c0;
+      --card-bg: #ece9e2;
+      --section-bg: #fff;
+      --button-bg: #bfa159;
+      --button-text: #fff;
+      --review-bg: #f3f3f3;
+      --star-color: #ffc107;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #ece9e2;
+      margin: 0;
+      color: var(--main-text);
+    }
+    /* Navigation Bar */
+    .navbar {
+      background: var(--primary-bg);
+      padding: 0px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative; /* Establish positioning context */
+    }
+    .logo {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: var(--primary-gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary-gold);
+    }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    .container {
+      max-width: 650px;
+      margin: 30px auto;
+      background: var(--section-bg);
+      padding: 0 30px 30px 30px;
+      box-shadow: 0 4px 24px rgba(80,60,30,0.10);
+      border-radius: 8px;
+    }
+    .hero-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px 8px 0 0;
+      background: #23211b;
+      display: block;
+      margin-top: 0;
+      position: relative;
+    }
+    .hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: brightness(50%); /* Darkens only the image */
+    }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 5em;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+      mix-blend-mode: normal; /* Ensures text remains unaffected by image filter */
+    }
+    .center {
+      text-align: center;
+    }
+    .title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 20px 0 5px 0;
+      color: var(--primary-bg);
+    }
+    .subtitle {
+      color: var(--link-blue);
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    /* Course Sections */
+    .course-section {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 10px;
+      background: #f9f9f9;
+      padding: 25px 0 10px 30px;
+      border-radius: 8px;
+    }
+    .course-bullets {
+      flex: 1;
+    }
+    .course-header {
+      background: var(--primary-gold);
+      color: white;
+      padding: 8px 12px;
+      margin: -15px -15px 15px -15px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .course-bullets ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+    .course-bullets li {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .course-right {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .agenda-img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .agenda-caption {
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    .level-btn {
+      width: 400px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      padding: 6px 18px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(80,60,30,0.08);
+      transition: transform 0.2s;
+    }
+    .level-btn:hover {
+      transform: scale(1.05);
+    }
+    .level-img-btn:hover .level-img {
+      transform: scale(1.05);
+    }
+    .level-btn-container {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: right;
+    }
+    .footer {
+      margin-top: 32px;
+      padding: 18px 0 0 0;
+      font-size: 0.95em;
+      text-align: center;
+      color: #666;
+    }
+    .footer .contact-info {
+      margin-bottom: 8px;
+      color: #23211b;
+    }
+    .footer a {
+      color: var(--link-blue);
+      text-decoration: none;
+      font-size: 0.97em;
+    }
+    /* Media Queries for Mobile vs PC */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none; /* Hidden by default on mobile */
+        position: absolute;
+        top: 100%; /* Start below navbar */
+        left: 0;
+        width: 100%;
+        background: var(--primary-bg);
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 1000; /* Ensure it stays above other content */
+      }
+      .nav-links.active {
+        display: flex; /* Show when active */
+      }
+      .hamburger {
+        display: block;
+      }
+      .container {
+        padding: 0px 6px 18px 6px;
+      }
+      .course-section {
+        flex-direction: column;
+        gap: 15px;
+        padding: 25px 25px 10px 30px;
+      }
+      .course-right {
+        flex: none;
+        order: 2; /* Image after bullets on mobile */
+      }
+      .hero-text {
+        font-size: 2em; /* Slightly smaller for mobile readability */
+      }
+      .level-btn {
+        max-width: 300px;
+      }
+    }
+    @media (min-width: 801px) {
+      .course-section {
+        align-items: flex-start;
+      }
+      .math-icons {
+        flex-direction: column;
+      }
+      .hamburger {
+        display: none;
+      }
+      .nav-links {
+        display: flex;
+      }
+    }
+  </style>
+  
+  <!-- Favicon for browser tab -->
+  <link rel="icon" type="image/png" href="images/icon-tutoriasexpress.png">
+  
+  <!-- Open Graph Meta Tags for social media sharing -->
+  <meta property="og:title" content="Tutorías Express Colombia - Primaria">
+  <meta property="og:description" content="Oferta de tutorías para primaria en Matemáticas, Ciencias Naturales e Inglés en desarrollo.">
+  <meta property="og:image" content="https://sfmantillas.github.io/tutoriasexpresscolombia/images/icon-tutoriasexpress.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sfmantillas.github.io/tutoriasexpresscolombia/primaria.html">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/icon-tutoriasexpress.png" alt="Logo Tutorías Express">
+      Tutorías Express
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="primaria.html">Primaria</a></li>
+      <li><a href="secundaria.html" class="active">Secundaria</a></li>
+      <li><a href="universidad.html">Universidad</a></li>
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="reviews.html">Reseñas</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Image with Darkened Effect and Centered Title -->
+    <div class="hero-img">
+      <img src="images/secundaria/secundaria.png" alt="Aula de clases para secundaria con globo terráqueo y libros, evocando aprendizaje interactivo.">
+      <div class="hero-text">Secundaria</div>
+    </div>
+
+    <!-- Course Section: Matemáticas -->
+    <section class="course-section">
+      <div class="course-bullets">
+        <div class="course-header">00: Matemáticas para Primaria</div>
+        <ul>
+          <li>Operaciones básicas (suma, resta, multiplicación, división)</li>
+          <li>Números enteros y fracciones</li>
+          <li>Patrones numéricos y secuencias</li>
+          <li>Medidas básicas (longitud, peso, volumen)</li>
+          <li>Comparación de números</li>
+        </ul>
+      </div>
+      <div class="course-right">
+        <img src="images/primaria/00.png" alt="Agenda amarilla para Matemáticas para Primaria" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 00: Matemáticas para Primaria" class="level-btn">Agendar 00: Matemáticas para Primaria</button>
+    </div>
+
+    <!-- Course Section: Ciencias Naturales -->
+    <section class="course-section">
+      <div class="course-bullets">
+        <div class="course-header">01: Ciencias Naturales para Primaria</div>
+        <ul>
+          <li>Estados de la materia (sólido, líquido, gas)</li>
+          <li>Propiedades de los materiales (duro, blando)</li>
+          <li>Fuerzas básicas (empuje, tracción, gravedad, magnético)</li>
+          <li>Energía y movimiento (sonido, color)</li>
+          <li>Ciclos naturales (agua, día y noche)</li>
+          <li>Introducción a átomos y elementos básicos</li>
+        </ul>
+      </div>
+      <div class="course-right">
+        <img src="images/primaria/01.png" alt="Agenda amarilla con microscopio y planta para Ciencias Naturales para Primaria" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 01: Ciencias Naturales para Primaria" class="level-btn">Agendar 01: Ciencias Naturales para Primaria</button>
+    </div>
+
+    <!-- Course Section: Inglés -->
+    <section class="course-section">
+      <div class="course-bullets">
+        <div class="course-header">02: Inglés para Primaria (en desarrollo)</div>
+        <ul>
+          <!-- Bullets not visible in screenshot; add placeholders or leave empty 
+          <li>Vocabulario básico de animales y naturaleza</li>
+          <li>Expresión oral simple</li>
+          <li>Reconocimiento de imágenes y palabras</li> -->
+        </ul>
+      </div>
+      <div class="course-right">
+        <img src="images/primaria/02.png" alt="Agenda amarilla con microscopio y planta para Ciencias Naturales para Primaria" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 02: Inglés para Primaria" class="level-btn">Agendar 02: Inglés para Primaria</button>
+    </div>
+
+    <div class="footer">
+      <div class="contact-info">
+        Para solicitudes de consultoría y tutorías, por favor contáctanos:<br>
+        <b>+57 320 555 3826 &mdash; 311 653 5828<br>Bogotá D.C, Colombia</b><br>
+        <a href="mailto:tutoriasexpresscolombia@gmail.com">tutoriasexpresscolombia@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      const navbar = document.querySelector('.navbar');
+      const isActive = navLinks.classList.contains('active');
+
+      if (isActive) {
+        navLinks.classList.remove('active');
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.classList.add('active');
+        navLinks.style.display = 'flex';
+        navLinks.style.top = `${navbar.offsetHeight}px`; // Position below navbar
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.background = 'var(--primary-bg)';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.padding = '10px 0';
+        navLinks.style.zIndex = '1000'; // Ensure it stays above other content
+      }
+    }
+  </script>
+</body>
+</html>
