@@ -32,6 +32,7 @@
       align-items: center;
       color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative; /* Ensure positioning context for dropdown */
     }
     .logo {
       font-size: 1.2em;
@@ -80,7 +81,7 @@
     }
     .hero-img {
       width: 100%;
-      height: auto;      /* Ensures aspect ratio is preserved */
+      height: auto;
       border-radius: 8px 8px 0 0;
       background: #23211b;
       display: block;
@@ -160,7 +161,7 @@
     }
     .level-img {
       width: 100%;
-      max-width: 140px; /* matches button width */
+      max-width: 140px;
       margin-top: 8px;
       border-radius: 4px;
       box-shadow: 0 1px 6px rgba(80,60,30,0.08);
@@ -205,17 +206,40 @@
       transform: scale(1.05);
     }
     @media (max-width: 700px) {
-      .levels {
+      .container {
+        padding: 0 6px 18px 6px;
+      }
+      .courses-row, .levels {
         flex-direction: column;
         gap: 10px;
       }
-      .level-btn {
-        width: 100%;
-        max-width: 300px;
+      .course-card {
+        margin: 0 auto;
       }
-      .level-img {
-        max-width: 140px;
+      .nav-links {
+        display: none; /* Hidden by default on mobile */
+        position: absolute;
+        top: 100%; /* Start below navbar */
+        left: 0;
         width: 100%;
+        background: var(--primary-bg);
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 1000; /* Ensure it stays above other content */
+      }
+      .nav-links.active {
+        display: flex; /* Show when active */
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+    @media (min-width: 701px) {
+      .hamburger {
+        display: none;
+      }
+      .nav-links {
+        display: flex;
       }
     }
     .courses-row {
@@ -305,32 +329,6 @@
       color: var(--link-blue);
       text-decoration: none;
       font-size: 0.97em;
-    }
-    @media (max-width: 700px) {
-      .container {
-        padding: 0 6px 18px 6px;
-      }
-      .courses-row, .levels {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .course-card {
-        margin: 0 auto;
-      }
-      .nav-links {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
-    }
-    @media (min-width: 701px) {
-      .hamburger {
-        display: none;
-      }
-      .nav-links {
-        display: flex;
-      }
     }
   </style>
   
@@ -467,14 +465,23 @@
   <script>
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.position = 'absolute';
-      navLinks.style.background = 'var(--primary-bg)';
-      navLinks.style.width = '100%';
-      navLinks.style.top = '100%';
-      navLinks.style.left = '0';
-      navLinks.style.padding = '10px 0';
+      const navbar = document.querySelector('.navbar');
+      const isActive = navLinks.classList.contains('active');
+
+      if (isActive) {
+        navLinks.classList.remove('active');
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.classList.add('active');
+        navLinks.style.display = 'flex';
+        navLinks.style.top = `${navbar.offsetHeight}px`; // Position below navbar
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.background = 'var(--primary-bg)';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.padding = '10px 0';
+        navLinks.style.zIndex = '1000'; // Ensure it stays above other content
+      }
     }
   </script>
 </body>
