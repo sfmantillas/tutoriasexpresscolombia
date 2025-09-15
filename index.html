@@ -26,7 +26,7 @@
     /* Navigation Bar */
     .navbar {
       background: var(--primary-bg);
-      padding: 0px 30px;
+      padding: 0px 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -167,7 +167,7 @@
       object-fit: contain;
     }
     .level-btn {
-      width: 140px;
+      width: 100px;
       background: var(--button-bg);
       color: var(--button-text);
       border: none;
@@ -178,6 +178,9 @@
       font-weight: bold;
       box-shadow: 0 2px 4px rgba(80,60,30,0.08);
       transition: transform 0.2s;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
     }
     .level-img-btn {
       background: none;
@@ -339,13 +342,13 @@
       Tutorías Express
     </div>
     <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="primaria.html" class="active">Primaria</a></li>
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="primaria.html">Primaria</a></li>
       <li><a href="secundaria.html">Secundaria</a></li>
       <li><a href="universitario.html">Universitario</a></li>
-      <li><a href="#">Agenda</a></li>
+      <li><a href="agenda.html">Agenda</a></li>
       <li><a href="reviews.html">Reseñas</a></li>
-      <li><a href="#">Contacto</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
     </ul>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
   </nav>
@@ -389,19 +392,19 @@
     </ul>
     <div class="levels">
   <div class="level-group">
-    <button title="Haz click y explora nuestra oferta para Primaria" class="level-btn">Primaria</button>
-      <button class="level-img-btn">
+    <a href="primaria.html" class="level-btn" title="Haz click y explora nuestra oferta para Primaria">Primaria</a>
+    <button class="level-img-btn">
       <img class="level-img" src="images/portada-boton-primaria.png" alt="Cursos Primaria">
     </button>
   </div>
   <div class="level-group">
-    <button title="Haz click y explora nuestra oferta para Secundaria" class="level-btn">Secundaria</button>
+    <a href="secundaria.html" class="level-btn" title="Haz click y explora nuestra oferta para Secundaria">Secundaria</a>
     <button class="level-img-btn">
       <img class="level-img" src="images/portada-boton-secundaria.png" alt="Cursos Secundaria">
     </button>
   </div>
   <div class="level-group">
-    <button title="Haz click y explora nuestra oferta para Universitario" class="level-btn">Universitario</button>
+    <a href="universitario.html" class="level-btn" title="Haz click y explora nuestra oferta para Universitario">Universitario</a>
     <button class="level-img-btn">
       <img class="level-img" src="images/portada-boton-universitario.png" alt="Cursos Universitario">
     </button>
