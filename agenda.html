@@ -571,7 +571,7 @@
   <!-- Main JavaScript for form handling and menu toggle -->
   <script>
     // Initialize EmailJS with your public key (replace with actual key from EmailJS dashboard)
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace "YOUR_PUBLIC_KEY" with your actual EmailJS public key
+    emailjs.init("4EUiQtGMgEhwFdJRu"); // Replace "YOUR_PUBLIC_KEY" with your actual EmailJS public key
 
     // Function to prevent past dates/times
     function preventPastDates() {
@@ -702,7 +702,7 @@
       };
 
       // Send email via EmailJS (replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID')
-      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+      emailjs.send('service_axjxpoo', 'template_wtls0xb', templateParams)
         .then(function(response) {
           console.log('Email sent successfully!', response.status, response.text);
           alert('Tu solicitud ha sido enviada. Te contactaremos pronto.');
