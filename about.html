@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<!-- Declares the document as HTML5 for modern rendering support -->
+<html lang="es">
+<!-- Root element with Spanish language for accessibility and SEO -->
+<head>
+  <!-- Metadata section containing character encoding -->
+  <meta charset="UTF-8">
+  <!-- Sets UTF-8 encoding for international characters -->
+  <title>Tutorías Express Colombia - Reseñas</title>
+  <!-- Page title displayed in browser tab -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ensures responsive design by setting viewport to device width with no initial zoom -->
+  <style>
+    /* CSS styles for the entire page */
+    :root {
+      /* CSS custom properties (variables) for consistent theming */
+      --primary-bg: #11100d;
+      /* Dark background color for navbar */
+      --primary-gold: #bfa159;
+      /* Gold accent color */
+      --main-text: #23211b;
+      /* Main text color */
+      --link-blue: #1565c0;
+      /* Blue color for links */
+      --card-bg: #ece9e2;
+      /* Background for cards */
+      --section-bg: #fff;
+      /* White background for sections */
+      --button-bg: #bfa159;
+      /* Gold background for buttons */
+      --button-text: #fff;
+      /* White text for buttons */
+      --review-bg: #f3f3f3;
+      /* Light gray for reviews */
+      --star-color: #ffc107;
+      /* Yellow for stars */
+    }
+    body {
+      /* Main body styles */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      /* Font stack for cross-browser compatibility */
+      background: #ece9e2;
+      /* Light beige background */
+      margin: 0;
+      /* No default margins */
+      color: var(--main-text);
+      /* Use main text color variable */
+    }
+    .navbar {
+      /* Top navigation bar */
+      background: var(--primary-bg);
+      /* Dark background */
+      padding: 0px 10px;
+      /* Minimal padding for compact look */
+      display: flex;
+      /* Flexbox for horizontal layout */
+      justify-content: space-between;
+      /* Space logo and menu apart */
+      align-items: center;
+      /* Vertically center items */
+      color: white;
+      /* White text */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      /* Subtle shadow for depth */
+      position: relative;
+      /* Relative positioning for dropdown context */
+    }
+    .logo {
+      /* Logo section in navbar */
+      font-size: 1.2em;
+      /* Larger font for logo text */
+      font-weight: bold;
+      /* Bold weight */
+      color: var(--primary-gold);
+      /* Gold color */
+      display: flex;
+      /* Flex for logo image and text */
+      align-items: center;
+      /* Center align */
+      gap: 10px;
+      /* Space between image and text */
+    }
+    .logo img {
+      /* Logo image */
+      height: 50px;
+      /* Fixed height */
+      width: auto;
+      /* Maintain aspect ratio */
+    }
+    .nav-links {
+      /* Navigation links list */
+      display: flex;
+      /* Horizontal flex by default */
+      list-style: none;
+      /* No bullets */
+      margin: 0;
+      /* No margins */
+      padding: 0;
+      /* No padding */
+      gap: 20px;
+      /* Space between links */
+    }
+    .nav-links a {
+      /* Individual nav links */
+      color: white;
+      /* White text */
+      text-decoration: none;
+      /* No underline */
+      font-weight: 500;
+      /* Medium weight */
+      transition: color 0.2s;
+      /* Smooth color change on hover */
+    }
+    .nav-links a:hover,
+    /* Hover state for links */
+    .nav-links a.active {
+      /* Active state */
+      color: var(--primary-gold);
+      /* Gold on hover/active */
+    }
+    .hamburger {
+      /* Hamburger menu button */
+      display: none;
+      /* Hidden by default (desktop) */
+      background: none;
+      /* No background */
+      border: none;
+      /* No border */
+      color: white;
+      /* White icon */
+      font-size: 1.5em;
+      /* Larger icon */
+      cursor: pointer;
+      /* Pointer cursor */
+    }
+    .container {
+      /* Main content container */
+      max-width: 650px;
+      /* Max width for readability */
+      margin: 30px auto;
+      /* Center with margins */
+      background: var(--section-bg);
+      /* White background */
+      padding: 0 30px 30px 30px;
+      /* Padding inside */
+      box-shadow: 0 4px 24px rgba(80,60,30,0.10);
+      /* Subtle shadow */
+      border-radius: 8px;
+      /* Rounded corners */
+    }
+    .hero-img {
+      /* Hero image section */
+      width: 100%;
+      /* Full width */
+      height: auto;
+      /* Auto height */
+      border-radius: 8px 8px 0 0;
+      /* Rounded top corners */
+      background: #23211b;
+      /* Dark fallback background */
+      display: block;
+      /* Block display */
+      margin-top: 0;
+      /* No top margin */
+      position: relative;
+      /* Relative for overlay positioning */
+    }
+    .hero-img img {
+      /* Hero image itself */
+      width: 100%;
+      /* Full width */
+      height: auto;
+      /* Auto height */
+      display: block;
+      /* Block for full width */
+      filter: brightness(50%);
+      /* Darken image to 50% brightness */
+    }
+    .hero-text {
+      /* Overlay text on hero image */
+      position: absolute;
+      /* Absolute positioning over image */
+      top: 50%;
+      /* 50% from top */
+      left: 50%;
+      /* 50% from left */
+      transform: translate(-50%, -50%);
+      /* Center exactly */
+      color: white;
+      /* White text */
+      font-size: 3.5em;
+      /* Large font */
+      font-weight: bold;
+      /* Bold weight */
+      text-align: center;
+      /* Center text */
+      width: 100%;
+      /* Full width */
+      padding: 0 20px;
+      /* Side padding */
+      box-sizing: border-box;
+      /* Include padding in width */
+      mix-blend-mode: normal;
+      /* Normal blending to avoid filter effect on text */
+    }
+    .center {
+      /* Center alignment utility */
+      text-align: center;
+      /* Center text */
+    }
+    .title {
+      /* Page title styles */
+      font-size: 1.5em;
+      /* Medium-large font */
+      font-weight: bold;
+      /* Bold */
+      margin: 20px 0 5px 0;
+      /* Spacing */
+      color: var(--primary-bg);
+      /* Dark text */
+    }
+    .subtitle {
+      /* Subtitle styles */
+      color: var(--link-blue);
+      /* Blue color */
+      font-weight: bold;
+      /* Bold */
+      font-size: 1.1em;
+      /* Slightly larger */
+    }
+    .reviews-section {
+      background: var(--review-bg);
+      border-radius: 7px;
+      padding: 16px;
+      margin-top: 24px;
+    }
+    .review {
+      margin-bottom: 15px;
+      font-size: 0.97em;
+    }
+    .review .reviewer {
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .review .stars {
+      color: var(--star-color);
+      font-size: 1em;
+      margin-right: 8px;
+    }
+    .review .subject {
+      font-weight: bold;
+      color: var(--link-blue);
+      margin-left: 6px;
+    }
+    .review .comment {
+      margin-left: 2px;
+      color: #444;
+      font-style: italic;
+      display: block;
+    }
+    .footer {
+      /* Footer styles */
+      margin-top: 32px;
+      /* Space above */
+      padding: 18px 0 0 0;
+      /* Top padding */
+      font-size: 0.95em;
+      /* Smaller font */
+      text-align: center;
+      /* Center text */
+      color: #666;
+      /* Gray color */
+    }
+    .footer .contact-info {
+      /* Contact info in footer */
+      margin-bottom: 8px;
+      /* Space below */
+      color: #23211b;
+      /* Dark text */
+    }
+    .footer a {
+      /* Footer links */
+      color: var(--link-blue);
+      /* Blue color */
+      text-decoration: none;
+      /* No underline */
+      font-size: 0.97em;
+      /* Slightly smaller */
+    }
+    /* Media Queries for Mobile vs PC */
+    @media (max-width: 820px) {
+      /* Mobile styles */
+      .nav-links {
+        /* Nav links on mobile - hidden by default */
+        display: none;
+        /* Hidden */
+        position: absolute;
+        /* Absolute for dropdown */
+        top: 100%;
+        /* Below navbar */
+        left: 0;
+        /* Left aligned */
+        width: 100%;
+        /* Full width */
+        background: var(--primary-bg);
+        /* Dark background */
+        flex-direction: column;
+        /* Vertical stack */
+        padding: 10px 0;
+        /* Vertical padding */
+        z-index: 1000;
+        /* Above other content */
+      }
+      .nav-links.active {
+        /* Active dropdown */
+        display: flex;
+        /* Show */
+      }
+      .hamburger {
+        /* Show hamburger on mobile */
+        display: block;
+        /* Visible */
+      }
+      .container {
+        /* Container on mobile */
+        padding: 0 6px 18px 6px;
+        /* Reduced padding */
+        /* margin: 10px auto;
+        Smaller margins */
+      }
+      .hero-text {
+        /* Hero text on mobile */
+        font-size: 2em;
+        /* Smaller font */
+      }
+    }
+    @media (min-width: 821px) {
+      /* Desktop styles */
+      .hamburger {
+        /* Hide hamburger on desktop */
+        display: none;
+        /* Hidden */
+      }
+      .nav-links {
+        /* Show nav links on desktop */
+        display: flex;
+        /* Visible horizontal */
+      }
+    }
+  </style>
+  
+  <!-- Favicon for browser tab - small icon in tab -->
+  <link rel="icon" type="image/png" href="images/icon-tutoriasexpress.png">
+  
+  <!-- Open Graph Meta Tags for social media sharing -->
+  <meta property="og:title" content="Tutorías Express Colombia - Reseñas">
+  <!-- Title for social previews -->
+  <meta property="og:description" content="Lee las reseñas de nuestros servicios de tutoría.">
+  <!-- Description for social previews -->
+  <meta property="og:image" content="https://sfmantillas.github.io/tutoriasexpresscolombia/images/icon-tutoriasexpress.png">
+  <!-- Image for social previews -->
+  <meta property="og:image:width" content="512">
+  <!-- Image width -->
+  <meta property="og:image:height" content="512">
+  <!-- Image height -->
+  <meta property="og:type" content="website">
+  <!-- Content type -->
+  <meta property="og:url" content="https://sfmantillas.github.io/tutoriasexpresscolombia/reviews.html">
+  <!-- Canonical URL -->
+</head>
+<body>
+  <!-- Navigation Bar - top menu bar -->
+  <nav class="navbar">
+    <!-- Logo container -->
+    <div class="logo">
+      <!-- Logo image -->
+      <img src="images/icon-tutoriasexpress.png" alt="Logo Tutorías Express">
+      <!-- Logo text -->
+      Tutorías Express
+    </div>
+    <!-- Navigation links list -->
+    <ul class="nav-links">
+      <!-- Home link -->
+      <li><a href="index.html">Inicio</a></li>
+      <!-- Primaria link -->
+      <li><a href="primaria.html">Primaria</a></li>
+      <!-- Secundaria link -->
+      <li><a href="secundaria.html">Secundaria</a></li>
+      <!-- Universitario link -->
+      <li><a href="universidad.html">Universidad</a></li>
+      <!-- Agenda link -->
+      <li><a href="agenda.html">Agenda</a></li>
+      <!-- Reviews link - active -->
+      <li><a href="reviews.html">Reseñas</a></li>
+      <!-- About link -->
+      <li><a href="about.html" class="active">Acerca de</a></li>
+    </ul>
+    <!-- Hamburger button for mobile menu -->
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Image with Darkened Effect and Centered Title -->
+    <div class="hero-img">
+      <!-- Hero image -->
+      <img src="images/reviews/reviews.png" alt="Imagen representativa de reseñas de clientes.">
+      <!-- Overlay text -->
+      <div class="hero-text">Acerca de</div>
+    </div>    
+
+    <h1 class="title center">Reseñas de Nuestros Servicios de Tutoría</h1>
+    <p class="center">Aquí puedes leer algunas de las reseñas de estudiantes en la plataforma The Princeton Review han dejado sobre nuestros servicios de tutoría. Valoramos mucho la opinión de los estudiantes y nos esforzamos por ofrecer la mejor experiencia posible.</p>
+    
+    <div class="reviews-section">
+      <div class="review">
+        <span class="reviewer">Aisha</span>
+          <span class="stars">★★★★★</span>
+          <span class="subject">Calculus</span>
+          <span class="comment">Very clear and helpful! Helped me solve many questions to achieve. I understood it.<br>
+          (Muy clara y excelente ayuda para preguntas hasta que las entendí.)</span>
+        </div>
+      </div>
+    <div class="reviews-section">
+      <div class="review">
+        <span class="reviewer">Floyd</span>
+        <span class="stars">★★★★★</span>
+        <span class="subject">Calculus</span>
+        <span class="comment">Kind and patient tutor with great knowledge.<br>
+        (Amable y paciente y muy buen conocimiento.)</span>
+      </div>
+    </div>
+    <div class="reviews-section">
+      <div class="review">
+        <span class="reviewer">Elena</span>
+        <span class="stars">★★★★★</span>
+        <span class="subject">Chemistry</span>
+        <span class="comment">Truly made my child confident about the conversion topic and was very patient with me and said I was doing a good job along the way.<br>
+        (Muy buena enseñanza sobre convertir las conversiones y fue muy paciente conmigo, diciéndome que lo estaba haciendo bien en el camino.)</span>
+      </div>
+    </div>
+    <div class="reviews-section">
+      <div class="review">
+        <span class="reviewer">Javier</span>
+        <span class="stars">★★★★★</span>
+        <span class="subject">Chemistry</span>
+        <span class="comment">Excellent tutor. Very approachable.<br>
+        (Excelente tutor. Muy agradable.)</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <!-- Footer contact info -->
+      <div class="contact-info">
+        <!-- Contact text -->
+        Para solicitudes de consultoría y tutorías, por favor contáctanos:<br>
+        <!-- Phone numbers -->
+        <b>+57 320 555 3826 &mdash; +57 311 653 5828<br>Bogotá D.C, Colombia</b><br>
+        <!-- Email link -->
+        <a href="mailto:tutoriasexpresscolombia@gmail.com">tutoriasexpresscolombia@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript for menu toggle -->
+  <script>
+    // Hamburger menu toggle function
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      const navbar = document.querySelector('.navbar');
+      const isActive = navLinks.classList.contains('active');
+
+      if (isActive) {
+        navLinks.classList.remove('active');
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.classList.add('active');
+        navLinks.style.display = 'flex';
+        navLinks.style.top = `${navbar.offsetHeight}px`; // Position below navbar
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.background = 'var(--primary-bg)';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.padding = '10px 0';
+        navLinks.style.zIndex = '1000'; // Ensure it stays above other content
+      }
+    }
+  </script>
+</body>
+</html>
