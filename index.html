@@ -129,7 +129,7 @@
       transform: scale(1.15);
     }
     .desc {
-      margin: 20px 0 0 0;
+      margin: 20px 20px 0px 20px;
       font-size: 1em;
       color: #444;
       line-height: 1.6;
@@ -140,9 +140,10 @@
       margin-top: 28px;
       margin-bottom: 10px;
       font-size: 1.1em;
+      padding-left: 15px;
     }
     ul.commitment {
-      padding-left: 20px;
+      padding-left: 50px;
       margin-bottom: 18px;
     }
     ul.commitment li {
@@ -205,7 +206,7 @@
     .level-img-btn:hover .level-img {
       transform: scale(1.05);
     }
-    @media (max-width: 800px) {
+    @media (max-width: 820px) {
       .container {
         padding: 0 6px 18px 6px;
       }
@@ -234,7 +235,7 @@
         display: block;
       }
     }
-    @media (min-width: 801px) {
+    @media (min-width: 821px) {
       .hamburger {
         display: none;
       }
@@ -269,6 +270,8 @@
       border-radius: 7px;
       padding: 16px;
       margin-top: 24px;
+      margin-left: 20px;
+      margin-right: 20px;
     }
     .review {
       margin-bottom: 15px;
@@ -360,23 +363,20 @@
       <li><a href="universidad.html">Universidad</a></li>
       <li><a href="agenda.html">Agenda</a></li>
       <li><a href="reviews.html">Reseñas</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="about.html">Acerca de</a></li>
     </ul>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
   </nav>
 
   <div class="container">
     <!-- Logo Hero Image Placeholder  -->
-    <img src="images/CabeceroA.png" alt="Logo for Tutorías Express Colombia featuring an icon of the Earth and the orbiting Moon inside a circular border. The text Tutorías Express is displayed in large gold letters above the rocket. The background is black, creating a professional and trustworthy atmosphere. The overall tone is welcoming and supportive, emphasizing academic guidance and confidence for students." class="hero-img">
+    <img src="images/Cabecero.png" alt="Logo for Tutorías Express Colombia featuring an icon of the Earth and the orbiting Moon inside a circular border. The text Tutorías Express is displayed in large gold letters above the rocket. The background is black, creating a professional and trustworthy atmosphere. The overall tone is welcoming and supportive, emphasizing academic guidance and confidence for students." class="hero-img">
     <div class="center">
       <div class="title">Bienvenido a Tutorías Express Colombia</div>
       <div class="subtitle">Acompañamiento académico para estudiantes de todos los niveles educativos</div>
       <div class="icon-row">
       <button class="icon-btn" title="Instagram" onclick="window.open('https://instagram.com/tutoriasexpresscolombia','_blank')">
         <img src="images/icon-instagram.png" alt="Instagram">
-      </button>
-      <button class="icon-btn" title="Google Scholar" onclick="window.open('https://scholar.google.com/citations?user=ktmAC_MAAAAJ&hl=es&oi=ao','_blank')">
-        <img src="images/icon-google-scholar.png" alt="Google Scholar">
       </button>
       <button class="icon-btn" title="YouTube" onclick="window.open('https://youtube.com/@TutoriasExpressColombia','_blank')">
         <img src="images/icon-youtube.png" alt="YouTube">
@@ -387,13 +387,19 @@
       <button class="icon-btn" title="LinkedIn" onclick="window.open('https://www.linkedin.com/in/sebastian-mantilla-serrano/','_blank')">
         <img src="images/icon-linkedin.png" alt="LinkedIn">
       </button>
+      <button class="icon-btn" title="ORCID" onclick="window.open('https://orcid.org/0000-0001-5617-0138','_blank')">
+        <img src="images/icon-orcid.png" alt="ORCID">
+      </button>
+      <button class="icon-btn" title="Google Scholar" onclick="window.open('https://scholar.google.com/citations?user=ktmAC_MAAAAJ&hl=es&oi=ao','_blank')">
+        <img src="images/icon-google-scholar.png" alt="Google Scholar">
+      </button>
       <button class="icon-btn" title="WhatsApp" onclick="window.open('https://wa.me/573205553826','_blank')">
         <img src="images/icon-whatsapp.png" alt="WhatsApp">
       </button>
     </div>
     </div>
     <div class="desc">
-      Impulsa tu trayectoria académica y la de tus hijos con tutorías personalizadas y expertas en Física, Matemáticas y Química. Diseñadas para Primaria, Secundaria y Universitarios, impartidas en línea o domicilio por expertos en Ciencias Naturales con más de 12 años de experiencia en la docencia personalizada.
+      Impulsa tu trayectoria académica y la de tus hijos con tutorías personalizadas y expertas en Física, Matemáticas y Química. Diseñadas para Primaria, Secundaria y Universitarios, impartidas en línea o presencial (a convenir) por expertos en Ciencias Exactas y Naturales con más de 12 años de experiencia en la docencia personalizada.
     </div>
     <div class="section-title">Nuestro Compromiso:</div>
     <ul class="commitment">
@@ -402,6 +408,7 @@
       <li>Sesiones flexibles y de alta calidad desde $80.000/hora + desplazamientos.</li>
       <li>Revisión estricta en informes y proyectos finales estudiantiles buscando la calidad máxima.</li>
     </ul>
+    <div class="section-title">Explora nuestra oferta para los tres niveles educativos:</div>
     <div class="levels">
   <div class="level-group">
     <a href="primaria.html" class="level-btn" title="Haz click y explora nuestra oferta para Primaria">Primaria</a>
@@ -416,12 +423,12 @@
     </a>
   </div>
   <div class="level-group">
-    <a href="universitario.html" class="level-btn" title="Haz click y explora nuestra oferta para Universitario">Universitario</a>
-    <a href="universitario.html" class="level-img-btn">
+    <a href="universidad.html" class="level-btn" title="Haz click y explora nuestra oferta para Universidad">Universidad</a>
+    <a href="universidad.html" class="level-img-btn">
       <img class="level-img" src="images/portada-boton-universitario.png" alt="Cursos Universitario">
     </a>
   </div>
-</div>
+  </div>
     <div class="reviews-section">
       <div class="review">
         <span class="reviewer">Aisha</span>
@@ -452,11 +459,13 @@
         (Excelente tutor. Muy agradable.)</span>
       </div>
     </div>
-    <a title="Haz click y lee todas las reseñas" href="#" class="view-more-btn">Ver más reseñas</a>
+    <a title="Haz click y lee todas las reseñas" href="reviews.html" class="view-more-btn">Ver más reseñas</a>
+    
+    
     <div class="footer">
       <div class="contact-info">
         Para solicitudes de consultoría y tutorías, por favor contáctanos:<br>
-        <b>+57 320 555 3826 &mdash; 311 653 5828<br>Bogotá D.C, Colombia</b><br>
+        <b>+57 320 555 3826 &mdash; +57 311 653 5828<br>Bogotá D.C, Colombia</b><br>
         <a href="mailto:tutoriasexpresscolombia@gmail.com">tutoriasexpresscolombia@gmail.com</a>
       </div>
     </div>
