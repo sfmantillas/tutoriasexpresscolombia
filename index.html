@@ -53,6 +53,9 @@
       width: auto; /* Maintain aspect ratio */
       transform: translateY(0%); /* Center align */
     }
+    .logo img:hover {
+      transform: scale(1.05); /* Slight scale up */
+    }
     .nav-links {
       display: flex; /* Horizontal flex by default */
       list-style: none; /* No bullets */
@@ -86,7 +89,7 @@
       content: "Menú"; /* Label for clarity on mobile */
       font-size: 0.6em; /* Smaller text below icon */
       position: absolute; /* Position below icon */
-      bottom: -25px; /* Below the icon */
+      bottom: -22px; /* Below the icon */
       left: 50%; /* Center horizontally */
       transform: translateX(-50%); /* Center align */
       color: #fff; /* White text */
@@ -193,7 +196,7 @@
     }
     .level-btn {
       width: 120px; /* Increased width for better visibility */
-      background: radial-gradient(#ffbf4f, var(--button-bg)); /* Gradient for 3D effect */
+      background: radial-gradient(var(--primary-gold), #906500); /* Gradient for 3D effect */
       color: var(--button-text); /* White text */
       border: none; /* No border */
       border-radius: 20px; /* Larger radius for balloon shape */
@@ -225,7 +228,7 @@
       transition: transform 0.2s; /* Smooth scale on hover */
     }
     .level-btn:hover {
-      background: radial-gradient(#fecf7c, var(--button-bg)); /* Lighter gradient on hover */
+      /*background: radial-gradient(#FFF4CD, var(--button-bg));  Lighter gradient on hover */
       transform: scale(1.05); /* Slight scale up */
       box-shadow: 6px 6px 12px var(--shadow-dark), -3px -3px 6px var(--shine-color); /* Enhanced shadow and shine */
     }
@@ -413,8 +416,8 @@
     <!-- Logo Hero Image Placeholder  -->
     <img src="images/Cabecero.png" alt="Logo for Tutorías Express Colombia featuring an icon of the Earth and the orbiting Moon inside a circular border. The text Tutorías Express is displayed in large gold letters above the rocket. The background is black, creating a professional and trustworthy atmosphere. The overall tone is welcoming and supportive, emphasizing academic guidance and confidence for students." class="hero-img">
   <div class="center">
-    <div class="title">Bienvenido a Tutorías Express Colombia</div>
-    <div class="subtitle">Acompañamiento académico para estudiantes de todos los niveles educativos</div>
+    <h1 class="title">Bienvenido a Tutorías Express Colombia</h1>
+    <div class="subtitle">Acompañamiento académico para estudiantes de todos los niveles educativos online y presencial para la ciudad de Bogotá</div>
   </div>
 
   <div class="center">
@@ -439,18 +442,18 @@
   </div>
     
 
-  <div class="section-title">Haz click en los botones de abajo y explora nuestra oferta:</div>
+  <div class="section-title">Haz click y explora nuestra oferta a continuación:</div>
   <div class="levels">
     <div class="level-group">
       <a href="primaria.html" class="level-btn" title="Haz click y explora nuestra oferta para Primaria">Primaria</a>
       <a href="primaria.html" class="level-img-btn">
-        <img class="level-img" src="images/portada-boton-primaria.png" alt="Cursos Primaria">
+        <img class="level-img" src="images/primaria/00.png" alt="Cursos Primaria">
       </a>
     </div>  
     <div class="level-group">
       <a href="secundaria.html" class="level-btn" title="Haz click y explora nuestra oferta para Secundaria">Secundaria</a>
       <a href="secundaria.html" class="level-img-btn">
-        <img class="level-img" src="images/portada-boton-secundaria.png" alt="Cursos Secundaria">
+        <img class="level-img" src="images/secundaria/11.png" alt="Cursos Secundaria">
       </a>
     </div>
     <div class="level-group">
