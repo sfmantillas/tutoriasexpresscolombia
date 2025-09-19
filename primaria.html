@@ -2,12 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Tutorías Express Colombia - Primaria</title>
+  <title>Primaria</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root {
-      --primary-bg: #11100d;
+      --primary-bg: #000000;
       --primary-gold: #bfa159;
+      --darker-gold:  #a7863b; /* Darker gold for headers */
       --main-text: #23211b;
       --link-blue: #1565c0;
       --card-bg: #ece9e2;
@@ -16,6 +17,7 @@
       --button-text: #fff;
       --review-bg: #f3f3f3;
       --star-color: #ffc107;
+      --shadow-dark: rgba(0, 0, 0, 0.327); /* Dark shadow for 3D effect */
     }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -25,33 +27,41 @@
     }
     /* Navigation Bar */
     .navbar {
-      background: var(--primary-bg);
-      padding: 0px 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: relative; /* Establish positioning context */
+      background: var(--primary-bg); /* Dark background */
+      padding: 0px 5px; /* Minimal padding for compact look */
+      padding-bottom: 18px;
+      padding-top: 0px;
+      display: flex; /* Flexbox for horizontal layout */
+      justify-content: space-between; /* Space logo and menu apart */
+      align-items: center; /* Vertically center items */
+      color: white; /* White text */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+      position: relative; /* Ensure positioning context for dropdown */
     }
     .logo {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: var(--primary-gold);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 1.2em; /* Larger font for logo text */
+      font-weight: bold; /* Bold weight */
+      color: var(--primary-gold); /* Gold color */
+      display: flex; /* Flex for logo image and text */
+      align-items: center; /* Center align */
+      gap: 5px; /* Space between image and text */
+      transform: translateY(12%); /* Center align */
     }
     .logo img {
-      height: 50px;
-      width: auto;
+      height: 70px; /* Fixed height */
+      width: auto; /* Maintain aspect ratio */
+      transform: translateY(0%); /* Center align */
+    }
+    .logo img:hover {
+      transform: scale(1.05); /* Slight scale up */
     }
     .nav-links {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 20px;
+      display: flex; /* Horizontal flex by default */
+      list-style: none; /* No bullets */
+      margin: 0; /* No margins */
+      padding: 0; /* No padding */
+      padding-top: 16px;
+      gap: 20px; /* Space between links */
     }
     .nav-links a {
       color: white;
@@ -64,12 +74,25 @@
       color: var(--primary-gold);
     }
     .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5em;
-      cursor: pointer;
+      display: none; /* Hidden by default (desktop) */
+      background: #333; /* Dark gray background for better visibility on mobile */
+      border: none; /* No border */
+      color: white; /* White icon */
+      font-size: 1.5em; /* Increased size for better visibility */
+      cursor: pointer; /* Pointer cursor */
+      padding: 8px 12px; /* Added padding for a larger clickable area */
+      border-radius: 4px; /* Rounded corners for a modern look */
+      position: relative; /* Relative for label positioning */
+    }
+    .hamburger::after {
+      content: "Menú"; /* Label for clarity on mobile */
+      font-size: 0.6em; /* Smaller text below icon */
+      position: absolute; /* Position below icon */
+      bottom: -22px; /* Below the icon */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Center align */
+      color: #fff; /* White text */
+      white-space: nowrap; /* Prevent text wrap */
     }
     .container {
       max-width: 650px;
@@ -135,7 +158,7 @@
       flex: 1;
     }
     .course-header {
-      background: var(--primary-gold);
+      background: #a7863b; /* Darker gold for header */ 
       color: white;
       padding: 8px 12px;
       margin: -15px -15px 15px -15px;
@@ -172,8 +195,8 @@
       font-style: italic;
     }
     .level-btn {
-      width: 400px;
-      background: var(--button-bg);
+      width: 300px;
+      background: radial-gradient(var(--primary-gold), #906500); /* Gradient for 3D effect */
       color: var(--button-text);
       border: none;
       border-radius: 4px;
@@ -181,7 +204,7 @@
       font-size: 1em;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0 2px 4px rgba(80,60,30,0.08);
+      box-shadow: 4px 4px 8px var(--shadow-dark), -2px -2px 4px var(--shine-color); /* 3D shadow and shine */
       transition: transform 0.2s;
     }
     .level-btn:hover {
@@ -213,7 +236,7 @@
       font-size: 0.97em;
     }
     /* Media Queries for Mobile vs PC */
-    @media (max-width: 820px) {
+    @media (max-width: 885px) {
       .nav-links {
         display: none; /* Hidden by default on mobile */
         position: absolute;
@@ -246,16 +269,13 @@
       .hero-text {
         font-size: 2em; /* Slightly smaller for mobile readability */
       }
-      .level-btn {
+      /*.level-btn {
         max-width: 300px;
-      }
+      }*/
     }
-    @media (min-width: 821px) {
+    @media (min-width: 886px) {
       .course-section {
         align-items: flex-start;
-      }
-      .math-icons {
-        flex-direction: column;
       }
       .hamburger {
         display: none;
@@ -264,19 +284,47 @@
         display: flex;
       }
     }
+    /* Dropdown Menu Styles */
+    .dropdown { /* Style for the dropdown container */
+      position: relative; /* Relative positioning for dropdown */
+      margin: 20px auto; /* Centered with margin */
+      max-width: 400px; /* Maximum width for readability */
+    }
+    .dropdown select { /* Style for the select element */
+      width: 100%; /* Full width of container */
+      padding: 10px; /* Padding inside */
+      font-size: 1em; /* Standard font size */
+      border: none; /* No border */
+      border-radius: 4px; /* Rounded corners */
+      background: var(--darker-gold); /* Gold background */
+      color: var(--button-text); /* White text */
+      appearance: none; /* Remove default arrow */
+      cursor: pointer; /* Pointer cursor */
+      box-shadow: 4px 4px 4px var(--shadow-dark); /* Subtle 3D shadow */
+      transition: box-shadow 0.2s; /* Smooth shadow transition */
+    }
+    .dropdown select:hover { /* Hover effect */
+      box-shadow: 8px 8px 6px var(--shadow-dark); /* Enhanced shadow on hover */
+    }
+    .dropdown select:focus { /* Focus effect */
+      outline: none; /* Remove default outline */
+      box-shadow: 0 0 5px var(--primary-gold); /* Glow effect on focus */
+    }
   </style>
   
   <!-- Favicon for browser tab -->
   <link rel="icon" type="image/png" href="images/icon-tutoriasexpress.png">
   
   <!-- Open Graph Meta Tags for social media sharing -->
-  <meta property="og:title" content="Tutorías Express Colombia - Primaria">
-  <meta property="og:description" content="Oferta de tutorías para primaria en Matemáticas, Ciencias Naturales e Inglés en desarrollo.">
-  <meta property="og:image" content="https://sfmantillas.github.io/tutoriasexpresscolombia/images/icon-tutoriasexpress.png">
+  <meta property="og:title" content="Tutorías Express Colombia">
+  <meta property="og:description" content="Acompañamiento académico para estudiantes de todos los niveles educativos en Física, Matemáticas y Química.">
+  <meta property="og:image" content="tutoriasexpresscolombia.github.io/images
+/icon-tutoriasexpress.png">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sfmantillas.github.io/tutoriasexpresscolombia/primaria.html">
+  <meta property="og:url" content="https://sfmantillas.github.io/tutoriasexpresscolombia/html.html">
+  
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -290,7 +338,7 @@
       <li><a href="primaria.html" class="active">Primaria</a></li>
       <li><a href="secundaria.html">Secundaria</a></li>
       <li><a href="universidad.html">Universidad</a></li>
-      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="agenda.html">Agenda tu cita</a></li>
       <li><a href="reviews.html">Reseñas</a></li>
       <li><a href="about.html">Acerca de</a></li>
     </ul>
@@ -304,8 +352,18 @@
       <div class="hero-text">Primaria</div>
     </div>
 
+    <!-- Dropdown Menu for Course Navigation -->
+    <div class="dropdown"> <!-- Container for dropdown -->
+      <select onchange="scrollToSection(this.value)"> <!-- Select element with onchange event -->
+        <option value="">Selecciona un curso</option> <!-- Default option -->
+        <option value="matematicas">00: Matemáticas para Primaria</option> <!-- Option for Matemáticas section -->
+        <option value="ciencias-naturales">01: Ciencias Naturales para Primaria</option> <!-- Option for Ciencias Naturales section -->
+        <option value="ingles">02: Inglés para Primaria</option> <!-- Option for Inglés section -->
+      </select>
+    </div>
+
     <!-- Course Section: Matemáticas -->
-    <section class="course-section">
+    <section class="course-section" id="matematicas"> <!-- Added ID for scrolling -->
       <div class="course-bullets">
         <div class="course-header">00: Matemáticas para Primaria</div>
         <ul>
@@ -325,7 +383,7 @@
     </div>
 
     <!-- Course Section: Ciencias Naturales -->
-    <section class="course-section">
+    <section class="course-section" id="ciencias-naturales"> <!-- Added ID for scrolling -->
       <div class="course-bullets">
         <div class="course-header">01: Ciencias Naturales para Primaria</div>
         <ul>
@@ -346,7 +404,7 @@
     </div>
 
     <!-- Course Section: Inglés -->
-    <section class="course-section">
+    <section class="course-section" id="ingles"> <!-- Added ID for scrolling -->
       <div class="course-bullets">
         <div class="course-header">02: Inglés para Primaria (en desarrollo)</div>
         <ul>
@@ -367,7 +425,7 @@
     <div class="footer">
       <div class="contact-info">
         Para solicitudes de consultoría y tutorías, por favor contáctanos:<br>
-        <b>+57 320 555 3826 &mdash; +57 311 653 5828<br>Bogotá D.C, Colombia</b><br>
+        <b>+57 311 620 5683 &mdash; +57 300 569 5330<br>Bogotá D.C, Colombia</b><br>
         <a href="mailto:tutoriasexpresscolombia@gmail.com">tutoriasexpresscolombia@gmail.com</a>
       </div>
     </div>
@@ -392,6 +450,13 @@
         navLinks.style.flexDirection = 'column';
         navLinks.style.padding = '10px 0';
         navLinks.style.zIndex = '1000'; // Ensure it stays above other content
+      }
+    }
+    
+    function scrollToSection(sectionId) { /* Function to scroll to the selected section */
+      if (sectionId) { /* Check if a valid section is selected */
+        const section = document.getElementById(sectionId); /* Get the target section */
+        section.scrollIntoView({ behavior: 'smooth' }); /* Smooth scroll to section */
       }
     }
   </script>

@@ -2,12 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Tutorías Express Colombia - Primaria</title>
+  <title>Universidad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root {
-      --primary-bg: #11100d;
+      --primary-bg: #000000;
       --primary-gold: #bfa159;
+      --darker-gold:  #a7863b; /* Darker gold for headers */
       --main-text: #23211b;
       --link-blue: #1565c0;
       --card-bg: #ece9e2;
@@ -16,6 +17,7 @@
       --button-text: #fff;
       --review-bg: #f3f3f3;
       --star-color: #ffc107;
+      --shadow-dark: rgba(0, 0, 0, 0.327); /* Dark shadow for 3D effect */
     }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -25,33 +27,41 @@
     }
     /* Navigation Bar */
     .navbar {
-      background: var(--primary-bg);
-      padding: 0px 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: relative; /* Establish positioning context */
+      background: var(--primary-bg); /* Dark background */
+      padding: 0px 5px; /* Minimal padding for compact look */
+      padding-bottom: 18px;
+      padding-top: 0px;
+      display: flex; /* Flexbox for horizontal layout */
+      justify-content: space-between; /* Space logo and menu apart */
+      align-items: center; /* Vertically center items */
+      color: white; /* White text */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+      position: relative; /* Ensure positioning context for dropdown */
     }
     .logo {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: var(--primary-gold);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 1.2em; /* Larger font for logo text */
+      font-weight: bold; /* Bold weight */
+      color: var(--primary-gold); /* Gold color */
+      display: flex; /* Flex for logo image and text */
+      align-items: center; /* Center align */
+      gap: 5px; /* Space between image and text */
+      transform: translateY(12%); /* Center align */
     }
     .logo img {
-      height: 50px;
-      width: auto;
+      height: 70px; /* Fixed height */
+      width: auto; /* Maintain aspect ratio */
+      transform: translateY(0%); /* Center align */
+    }
+    .logo img:hover {
+      transform: scale(1.05); /* Slight scale up */
     }
     .nav-links {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 20px;
+      display: flex; /* Horizontal flex by default */
+      list-style: none; /* No bullets */
+      margin: 0; /* No margins */
+      padding: 0; /* No padding */
+      padding-top: 16px;
+      gap: 20px; /* Space between links */
     }
     .nav-links a {
       color: white;
@@ -64,12 +74,25 @@
       color: var(--primary-gold);
     }
     .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5em;
-      cursor: pointer;
+      display: none; /* Hidden by default (desktop) */
+      background: #333; /* Dark gray background for better visibility on mobile */
+      border: none; /* No border */
+      color: white; /* White icon */
+      font-size: 1.5em; /* Increased size for better visibility */
+      cursor: pointer; /* Pointer cursor */
+      padding: 8px 12px; /* Added padding for a larger clickable area */
+      border-radius: 4px; /* Rounded corners for a modern look */
+      position: relative; /* Relative for label positioning */
+    }
+    .hamburger::after {
+      content: "Menú"; /* Label for clarity on mobile */
+      font-size: 0.6em; /* Smaller text below icon */
+      position: absolute; /* Position below icon */
+      bottom: -22px; /* Below the icon */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Center align */
+      color: #fff; /* White text */
+      white-space: nowrap; /* Prevent text wrap */
     }
     .container {
       max-width: 650px;
@@ -135,7 +158,7 @@
       flex: 1;
     }
     .course-header {
-      background: var(--primary-gold);
+      background: #a7863b; /* Darker gold for header */ 
       color: white;
       padding: 8px 12px;
       margin: -15px -15px 15px -15px;
@@ -172,8 +195,8 @@
       font-style: italic;
     }
     .level-btn {
-      width: 400px;
-      background: var(--button-bg);
+      width: 300px;
+      background: radial-gradient(var(--primary-gold), #906500); /* Gradient for 3D effect */
       color: var(--button-text);
       border: none;
       border-radius: 4px;
@@ -181,7 +204,7 @@
       font-size: 1em;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0 2px 4px rgba(80,60,30,0.08);
+      box-shadow: 4px 4px 8px var(--shadow-dark), -2px -2px 4px var(--shine-color); /* 3D shadow and shine */
       transition: transform 0.2s;
     }
     .level-btn:hover {
@@ -213,7 +236,7 @@
       font-size: 0.97em;
     }
     /* Media Queries for Mobile vs PC */
-    @media (max-width: 820px) {
+    @media (max-width: 885px) {
       .nav-links {
         display: none; /* Hidden by default on mobile */
         position: absolute;
@@ -246,16 +269,13 @@
       .hero-text {
         font-size: 2em; /* Slightly smaller for mobile readability */
       }
-      .level-btn {
+      /*.level-btn {
         max-width: 300px;
-      }
+      }*/
     }
-    @media (min-width: 821px) {
+    @media (min-width: 886px) {
       .course-section {
         align-items: flex-start;
-      }
-      .math-icons {
-        flex-direction: column;
       }
       .hamburger {
         display: none;
@@ -264,20 +284,49 @@
         display: flex;
       }
     }
+    /* Dropdown Menu Styles */
+    .dropdown { /* Style for the dropdown container */
+      position: relative; /* Relative positioning for dropdown */
+      margin: 20px auto; /* Centered with margin */
+      max-width: 400px; /* Maximum width for readability */
+    }
+    .dropdown select { /* Style for the select element */
+      width: 100%; /* Full width of container */
+      padding: 10px; /* Padding inside */
+      font-size: 1em; /* Standard font size */
+      border: none; /* No border */
+      border-radius: 4px; /* Rounded corners */
+      background: var(--darker-gold); /* Gold background */
+      color: var(--button-text); /* White text */
+      appearance: none; /* Remove default arrow */
+      cursor: pointer; /* Pointer cursor */
+      box-shadow: 4px 4px 4px var(--shadow-dark); /* Subtle 3D shadow */
+      transition: box-shadow 0.2s; /* Smooth shadow transition */
+    }
+    .dropdown select:hover { /* Hover effect */
+      box-shadow: 8px 8px 6px var(--shadow-dark); /* Enhanced shadow on hover */
+    }
+    .dropdown select:focus { /* Focus effect */
+      outline: none; /* Remove default outline */
+      box-shadow: 0 0 5px var(--primary-gold); /* Glow effect on focus */
+    }
   </style>
   
   <!-- Favicon for browser tab -->
   <link rel="icon" type="image/png" href="images/icon-tutoriasexpress.png">
   
   <!-- Open Graph Meta Tags for social media sharing -->
-  <meta property="og:title" content="Tutorías Express Colombia - Primaria">
-  <meta property="og:description" content="Oferta de tutorías para primaria en Matemáticas, Ciencias Naturales e Inglés en desarrollo.">
-  <meta property="og:image" content="https://sfmantillas.github.io/tutoriasexpresscolombia/images/icon-tutoriasexpress.png">
+  <meta property="og:title" content="Tutorías Express Colombia">
+  <meta property="og:description" content="Acompañamiento académico para estudiantes de todos los niveles educativos en Física, Matemáticas y Química.">
+  <meta property="og:image" content="tutoriasexpresscolombia.github.io/images
+/icon-tutoriasexpress.png">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sfmantillas.github.io/tutoriasexpresscolombia/primaria.html">
+  <meta property="og:url" content="https://sfmantillas.github.io/tutoriasexpresscolombia/secundaria.html">
+
 </head>
+
 <body>
   <!-- Navigation Bar -->
   <nav class="navbar">
@@ -290,7 +339,7 @@
       <li><a href="primaria.html">Primaria</a></li>
       <li><a href="secundaria.html">Secundaria</a></li>
       <li><a href="universidad.html" class="active">Universidad</a></li>
-      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="agenda.html">Agenda tu cita</a></li>
       <li><a href="reviews.html">Reseñas</a></li>
       <li><a href="about.html">Acerca de</a></li>
     </ul>
@@ -301,73 +350,236 @@
     <!-- Hero Image with Darkened Effect and Centered Title -->
     <div class="hero-img">
       <img src="images/universidad/universidad.png" alt="Aula de clases para universidad con globo terráqueo y libros, evocando aprendizaje interactivo.">
-      <div class="hero-text">Universidad</div>
+      <h1 class="hero-text">Universidad</h1>
     </div>
 
-    <!-- Course Section: Matemáticas -->
-    <section class="course-section">
+    <!-- Dropdown Menu for Course Navigation -->
+    <div class="dropdown"> <!-- Container for dropdown -->
+      <select onchange="scrollToSection(this.value)"> <!-- Select element with onchange event -->
+        <option value="">Selecciona un curso</option> <!-- Default option -->
+        <option value="informes-laboratorio">2: Revisión de Documentos</option> <!-- Option for Revisión section -->
+        <option value="informes-laboratorio">2A: Revisión de Informes de Laboratorio</option> <!-- Option for Revisión section -->
+        <option value="trabajos-finales">2B: Revisión de Trabajos Finales</option> <!-- Option for Revisión section -->
+        <option value="matematicas-universitarias">3: Matemáticas Universitarias</option> <!-- Option for Revisión section -->
+        <option value="precalculo">30: Precálculo</option> <!-- Option for Precálculo section -->Universitarias</option> <!-- Option for Revisión section -->
+        <option value="calculo-diferencial">31: Cálculo Diferencial</option> <!-- Option for Precálculo section -->Universitarias</option> <!-- Option for Cálculo Diferencial section -->
+        <option value="calculo-integral">32: Cálculo Integral</option> <!-- Option for Cálculo Integral section -->Universitarias</option> <!-- Option for Revisión section -->
+        <option value="calculo-multivariable">33: Cálculo Multivariable</option> <!-- Option for Cálculo Multivariable section -->Universitarias</option> <!-- Option for Revisión section -->
+        <option value="ecuaciones-diferenciales">34: Ecuaciones Diferenciales</option> <!-- Option for Ecuaciones Diferenciales section -->Universitarias</option> <!-- Option for Revisión section -->
+        <option value="algebra-lineal">35: Álgebra Lineal</option> <!-- Option for Álgebra Lineal section -->
+        <option value="probabilidad-estadistica">36: Probabilidad y Estadística (en desarrollo)</option> <!-- Option for Probabilidad y Estadística section -->
+      </select>
+    </div>
+
+    <h2 class="title center" id="revision">2. Revisión de documentos</h2>
+
+    <!-- Course Section: Revisión -->
+    <section class="course-section" id="informes-laboratorio"> <!-- Added ID for scrolling -->
       <div class="course-bullets">
-        <div class="course-header">00: Matemáticas para Primaria</div>
+        <div class="course-header">2A: Revisión de Informes de Laboratorio</div>
         <ul>
-          <li>Operaciones básicas (suma, resta, multiplicación, división)</li>
-          <li>Números enteros y fracciones</li>
-          <li>Patrones numéricos y secuencias</li>
-          <li>Medidas básicas (longitud, peso, volumen)</li>
-          <li>Comparación de números</li>
+          <li><b>No fabricación de informes</b>: Aclaración de que no se elaboran informes; se parte del trabajo realizado por el estudiante.</li>
+          <li><b>Fecha de envío</b>: El documento necesita ser enviado como mínimo tres días hábiles antes de la entrega para revisarlo a profundidad, rechazando plazos de entrega más cortos.</li>
+          <li><b>Requisito de datos y borrador</b>: Se requiere enviar todos los datos recolectados y un borrador completo del informe antes de la tutoría.</li>
+          <li><b>Enfoque en calidad científica</b>: Mejora de la presentación de resultados, etiquetado de gráficas, análisis y conclusiones científicas.</li>
+          <li><b>Cumplimiento de estándares académicos</b>: Orientación sobre formato, citas y estructura requerida por la institución. Adjuntar hoja de requerimientos de la institución si existe.</li>
         </ul>
       </div>
       <div class="course-right">
-        <img src="images/primaria/00.png" alt="Agenda amarilla para Matemáticas para Primaria" class="agenda-img">
+        <img src="images/universidad/2A.png" alt="Laboratorio de Química" class="agenda-img">
       </div>
     </section>
     <div class="level-btn-container">
-      <button title="Agendar 00: Matemáticas para Primaria" class="level-btn">Agendar 00: Matemáticas para Primaria</button>
+      <button title="2A: Revisión de Informes de Laboratorio" class="level-btn">Agendar 2A: Revisión de Informes de Laboratorio</button>
     </div>
 
-    <!-- Course Section: Ciencias Naturales -->
-    <section class="course-section">
+    <!-- Course Section: Revisión -->
+    <section class="course-section" id="trabajos-finales"> <!-- Added ID for scrolling -->
       <div class="course-bullets">
-        <div class="course-header">01: Ciencias Naturales para Primaria</div>
+        <div class="course-header">2B: Revisión de Trabajos Finales</div>
         <ul>
-          <li>Estados de la materia (sólido, líquido, gas)</li>
-          <li>Propiedades de los materiales (duro, blando)</li>
-          <li>Fuerzas básicas (empuje, tracción, gravedad, magnético)</li>
-          <li>Energía y movimiento (sonido, color)</li>
-          <li>Ciclos naturales (agua, día y noche)</li>
-          <li>Introducción a átomos y elementos básicos</li>
+          <li><b>Exclusividad en asignaturas</b>:  Solo aplica para las asignaturas abajo listadas.</li>
+          <li><b>No elaboración de trabajos</b>: Aclaración explícita de que no se realizan trabajos; solo se evalúa y mejora el documento del estudiante.</li>
+          <li><b>Fecha de envío</b>: Como mínimo dos semanas antes de la entrega para revisarlo a profundidad, rechazando plazos de entrega más cortos.</li>
+          <li><b>Requisito de borrador casi completo</b>: Obligatorio para una revisión efectiva.</li>
+          <li><b>Retroalimentación constructiva</b>: Enfocada en mejorar estructura, contenido y presentación del trabajo.</li>
+          <li><b>Orientación personalizada</b>: Identificación de áreas de mejora específicas, como redacción o argumentación.</li>
         </ul>
       </div>
       <div class="course-right">
-        <img src="images/primaria/01.png" alt="Agenda amarilla con microscopio y planta para Ciencias Naturales para Primaria" class="agenda-img">
+        <img src="images/universidad/2B.png" alt="Laboratorio de Química" class="agenda-img">
       </div>
     </section>
     <div class="level-btn-container">
-      <button title="Agendar 01: Ciencias Naturales para Primaria" class="level-btn">Agendar 01: Ciencias Naturales para Primaria</button>
+      <button title="Agendar 2B: Revisión de Trabajos Finales" class="level-btn">Agendar 2B: Revisión de Trabajos Finales</button>
     </div>
 
-    <!-- Course Section: Inglés -->
-    <section class="course-section">
+    <h2 class="title center" id="matematicas-universitarias">3. Matemáticas Universitarias</h2>
+
+    <!-- Course Section: Precálculo -->
+    <section class="course-section" id="precalculo"> <!-- Added ID for scrolling -->
       <div class="course-bullets">
-        <div class="course-header">02: Inglés para Primaria (en desarrollo)</div>
+        <div class="course-header">30: Precálculo</div>
         <ul>
-          <!-- Bullets not visible in screenshot; add placeholders or leave empty 
-          <li>Vocabulario básico de animales y naturaleza</li>
-          <li>Expresión oral simple</li>
-          <li>Reconocimiento de imágenes y palabras</li> -->
+          <li>Funciones y sus propiedades: dominios, rangos y gráficas.</li>
+          <li>Funciones polinómicas: raíces, factorización y teorema del factor.</li>
+          <li>Funciones racionales: asíntotas y descontinuidades.</li>
+          <li>Funciones exponenciales y logarítmicas: propiedades y ecuaciones.</li>
+          <li>Trigonometría: identidades, ecuaciones y aplicaciones.</li>
+          <li>Números complejos: operaciones, forma polar y teorema de De Moivre.</li>
+          <li>Secciones cónicas: ecuaciones de parábolas, elipses e hipérbolas.</li>
+          <li>Secuencias y series: aritméticas, geométricas y límites introductorios</li>
         </ul>
       </div>
       <div class="course-right">
-        <img src="images/primaria/02.png" alt="Agenda amarilla con microscopio y planta para Ciencias Naturales para Primaria" class="agenda-img">
+        <img src="images/universidad/30.png" alt="Regla circular de cálculo" class="agenda-img">
       </div>
     </section>
     <div class="level-btn-container">
-      <button title="Agendar 02: Inglés para Primaria" class="level-btn">Agendar 02: Inglés para Primaria</button>
+      <button title="Agendar 30: Precálculo" class="level-btn">Agendar 30: Precálculo</button>
+    </div>
+
+    <!-- Course Section: Cálculo Diferencial -->
+    <section class="course-section" id="calculo-diferencial"> <!-- Added ID for scrolling -->
+      <div class="course-bullets">
+        <div class="course-header">31: Cálculo Diferencial</div>
+        <ul>
+          <li>Los problemas que fundamentan al cálculo y ejemplos históricos.</li>
+          <li>Números reales: propiedades de enteros, racionales y reales con operaciones.</li>
+          <li>Límites y continuidad: teorema del sándwich y propiedades.</li>
+          <li>Derivadas: definición, reglas básicas y aplicaciones.</li>
+          <li>Teorema del valor medio y teorema de Rolle.</li>
+          <li>Optimización: máximos y mínimos locales.</li>
+          <li>Aproximaciones lineales y diferenciales.</li>
+          <li>Análisis de funciones: concavidad y puntos de inflexión.</li>
+        </ul>
+      </div>
+      <div class="course-right">
+        <img src="images/universidad/31.png" alt="Regla circular de cálculo" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 31: Cálculo Diferencial" class="level-btn">Agendar 31: Cálculo Diferencial</button>
+    </div>
+
+    <!-- Course Section: Cálculo Integral -->
+    <section class="course-section" id="calculo-integral"> <!-- Added ID for scrolling -->
+      <div class="course-bullets">
+        <div class="course-header">32: Cálculo Integral</div>
+        <ul>
+          <li>Las integrales definida e indefinida: sumas de Riemann y propiedades.</li>
+          <li>Teorema fundamental del cálculo y antiderivadas.</li>
+          <li>Funciones logaritmo y exponencial: propiedades y derivación.</li>
+          <li>Métodos de integración: sustitución, por partes y fracciones parciales.</li>
+          <li>Integrales impropias y convergencia.</li>
+          <li>Aplicaciones: áreas, volúmenes y longitudes de arco.</li>
+          <li>Ecuaciones diferenciales básicas: introducción a separables.</li>
+          <li>Series y aproximaciones: teorema del valor medio integral</li>
+        </ul>
+      </div>
+      <div class="course-right">
+        <img src="images/universidad/32.png" alt="Regla circular de cálculo" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 32: Cálculo Integral" class="level-btn">Agendar 32: Cálculo Integral</button>
+    </div>
+
+    <!-- Course Section: Cálculo Multivariable -->
+    <section class="course-section" id="calculo-multivariable"> <!-- Added ID for scrolling -->
+      <div class="course-bullets">
+        <div class="course-header">33: Cálculo Multivariable</div>
+        <ul>
+          <li>Función real de varias variables reales y gráficas.</li>
+          <li>Pensar en funciones multivariables: dominios y rangos.</li>
+          <li>Derivadas parciales y diferenciabilidad.</li>
+          <li>Gradiente y derivadas direccionales.</li>
+          <li>Regla de la cadena en varias variables.</li>
+          <li>Optimización: máximos, mínimos y puntos críticos.</li>
+          <li>Integrales dobles y triples: coordenadas polares y esféricas.</li>
+          <li>Teoremas vectoriales: Green, Stokes y Divergencia</li>
+        </ul>
+      </div>
+      <div class="course-right">
+        <img src="images/universidad/33.png" alt="Regla circular de cálculo" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 33: Cálculo Multivariable" class="level-btn">Agendar 33: Cálculo Multivariable</button>
+    </div>
+
+    <!-- Course Section: Ecuaciones diferenciales -->
+    <section class="course-section" id="ecuaciones-diferenciales"> <!-- Added ID for scrolling -->
+      <div class="course-bullets">
+        <div class="course-header">34: Ecuaciones diferenciales</div>
+        <ul>
+          <li>Ecuaciones diferenciales lineales de primer orden: homogéneas y no homogéneas.</li>
+          <li>Métodos elementales: variables separadas y exactas.</li>
+          <li>Factor integrante y variación de parámetros.</li>
+          <li>Ecuaciones de orden superior: lineales con coeficientes constantes.</li>
+          <li>Teoría cualitativa: existencia y unicidad de soluciones.</li>
+          <li>Series de potencias y soluciones en singularidades.</li>
+          <li>Transformada de Laplace: resolución de ecuaciones lineales.</li>
+          <li>Sistemas de ecuaciones diferenciales: métodos matriciales.</li>
+        </ul>
+      </div>
+      <div class="course-right">
+        <img src="images/universidad/34.png" alt="Regla circular de cálculo" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 34: Ecuaciones diferenciales" class="level-btn">Agendar 34: Ecuaciones diferenciales</button>
+    </div>
+
+    <!-- Course Section: Álgebra Lineal -->
+    <section class="course-section" id="algebra-lineal"> <!-- Added ID for scrolling -->
+      <div class="course-bullets">
+        <div class="course-header">35: Álgebra Lineal</div>
+        <ul>
+          <li>Sistemas de ecuaciones lineales: resolución y reducción de filas.</li>
+          <li>Operaciones con matrices: suma, multiplicación e inversas.</li>
+          <li>Espacios vectoriales: bases, dimensión y subespacios.</li>
+          <li>Dependencia e independencia lineal de vectores.</li>
+          <li>Transformaciones lineales: núcleos, rangos y matrices asociadas.</li>
+          <li>Determinantes: propiedades y cálculo.</li>
+          <li>Valores y vectores propios: diagonalización.</li>
+          <li>Espacios con producto interno: ortogonalidad y bases ortonormales.</li>
+        </ul>
+      </div>
+      <div class="course-right">
+        <img src="images/universidad/35.png" alt="Regla circular de cálculo" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 35: Álgebra Lineal" class="level-btn">Agendar 35: Álgebra Lineal</button>
+    </div>
+
+    <!-- Course Section: Álgebra Lineal -->
+    <section class="course-section" id="probabilidad-estadistica"> <!-- Added ID for scrolling -->
+      <div class="course-bullets">
+          <div class="course-header">36: Probabilidad y Estadística (en desarrollo)</div>
+          <!--- <ul>
+            <li>Conceptos básicos de probabilidad: espacio muestral y eventos.</li>
+            <li>Reglas de probabilidad: adición y multiplicación.</li>
+            <li>Variables aleatorias: discretas y continuas.</li>
+            <li>Distribuciones de probabilidad: binomial, normal y Poisson.</li>
+            <li>Estadística descriptiva: medidas de tendencia central y dispersión.</li>
+            <li>Inferencia estadística: estimación y pruebas de hipótesis.</li>
+            <li>Regresión y correlación: análisis de relaciones entre variables.</li>
+          </ul> --->
+      </div>
+      <div class="course-right">
+        <img src="images/universidad/36.png" alt="Máquina de Galton" class="agenda-img">
+      </div>
+    </section>
+    <div class="level-btn-container">
+      <button title="Agendar 36: Probabilidad y Estadística" class="level-btn">Agendar 36: Probabilidad y Estadística</button>
     </div>
 
     <div class="footer">
       <div class="contact-info">
         Para solicitudes de consultoría y tutorías, por favor contáctanos:<br>
-        <b>+57 320 555 3826 &mdash; +57 311 653 5828<br>Bogotá D.C, Colombia</b><br>
+        <b>+57 311 620 5683 &mdash; +57 300 569 5330<br>Bogotá D.C, Colombia</b><br>
         <a href="mailto:tutoriasexpresscolombia@gmail.com">tutoriasexpresscolombia@gmail.com</a>
       </div>
     </div>
@@ -392,6 +604,13 @@
         navLinks.style.flexDirection = 'column';
         navLinks.style.padding = '10px 0';
         navLinks.style.zIndex = '1000'; // Ensure it stays above other content
+      }
+    }
+    
+    function scrollToSection(sectionId) { /* Function to scroll to the selected section */
+      if (sectionId) { /* Check if a valid section is selected */
+        const section = document.getElementById(sectionId); /* Get the target section */
+        section.scrollIntoView({ behavior: 'smooth' }); /* Smooth scroll to section */
       }
     }
   </script>
